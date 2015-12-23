@@ -2,10 +2,13 @@ package course01.prj10;
  
 import java.util.Scanner;
  
-class Student {
+public class Student {
  private String fio;
  private int numGroup;
- private int []marks;
+ public int getNumGroup() {
+	return numGroup;
+}
+private int []marks;
  
  public String getFio(){return this.fio;}
  public void setFio(String fio){this.fio=fio;}
@@ -26,12 +29,12 @@ class Student {
 	return this.marks[i];
 }
  
- Student(String fio,int numGroup,int numMarks){
+ public Student(String fio,int numGroup,int numMarks){
 	 this.fio=fio;
 	 this.numGroup=numGroup;
 	 marks=new int[numMarks];
  }
- Student(String fio, int numGroup){
+ public Student(String fio, int numGroup){
 	 this.fio=fio;
 	 this.numGroup=numGroup;
 	 this.marks=new int[5];		 

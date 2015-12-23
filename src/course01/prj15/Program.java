@@ -9,6 +9,7 @@ public class Program {
 		
 		 myWindow.setVisible(true);
 
+		 
 		//JFrame myWindow = new GridBagLayoutWindow();
 		//myWindow.setVisible(true);
 		

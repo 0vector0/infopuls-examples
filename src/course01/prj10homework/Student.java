@@ -33,7 +33,7 @@ public class Student implements Comparable {
 
 	private int numberOfStudent;
 
-	Student(int groupNumber, int numberOfStudent) {
+	 Student(int groupNumber, int numberOfStudent) {
 		//Scanner sc = new Scanner(System.in);
 		this.groupNumber = groupNumber;
 		this.numberOfStudent = numberOfStudent;
