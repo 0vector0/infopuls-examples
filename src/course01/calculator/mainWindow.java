@@ -38,7 +38,7 @@ public class mainWindow {
 	private JFrame frame;
 	double inputNumber = 0;
 	String tempInputNumberStr;
-	String operation;
+	String operationStr;
 	boolean bool = false;
 	
 	JTextPane textPaneResult = new JTextPane();
@@ -409,6 +409,17 @@ public class mainWindow {
 		panelButton.add(button3, gbc_button3);
 		
 		JButton buttonMinus = new JButton("-");
+		buttonMinus.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				operationStr = "-";
+				//tempInputNumberStr = textPaneMainResult.getText();
+				inputNumber = Double.parseDouble(textPaneMainResult.getText());
+				textPaneResult.setText(operationStr + " " + textPaneMainResult.getText());
+				bool = true;
+				//textPaneMainResult.setText("0");
+			}
+		});
 		buttonMinus.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_buttonMinus = new GridBagConstraints();
 		gbc_buttonMinus.fill = GridBagConstraints.BOTH;
@@ -422,10 +433,20 @@ public class mainWindow {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				if (operation.equals("+")) {
+				char operationChar = operationStr.charAt(0);
+				
+				switch (operationChar) {
+				case '+':
 					textPaneMainResult.setText(String.valueOf(inputNumber + Double.parseDouble(textPaneMainResult.getText())));
 					bool = true;
+					break;
+				case '-':
+					textPaneMainResult.setText(String.valueOf(inputNumber - Double.parseDouble(textPaneMainResult.getText())));
+					bool = true;
+				default:
+					break;
 				}
+				
 			}
 		});
 		buttonEquall.setMargin(new Insets(0, 0, 0, 0));
@@ -470,10 +491,10 @@ public class mainWindow {
 			public void mouseClicked(MouseEvent e) {
 				
 				
-				operation = "+";
+				operationStr = "+";
 				//tempInputNumberStr = textPaneMainResult.getText();
 				inputNumber = Double.parseDouble(textPaneMainResult.getText());
-				textPaneResult.setText(operation + " " + textPaneMainResult.getText());
+				textPaneResult.setText(operationStr + " " + textPaneMainResult.getText());
 				bool = true;
 				//textPaneMainResult.setText("0");
 			}
