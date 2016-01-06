@@ -38,7 +38,7 @@ public class mainWindow {
 	private JFrame frame;
 	double inputNumber = 0;
 	String tempInputNumberStr;
-	String operation;
+	String operationStr;
 	boolean bool = false;
 	
 	JTextPane textPaneResult = new JTextPane();
@@ -73,6 +73,7 @@ public class mainWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("Калькулятор");
 		frame.setResizable(false);
 		frame.setSize(220, 310);
 		//frame.setBounds(100, 100, 230, 320);
@@ -176,6 +177,7 @@ public class mainWindow {
 			public void mouseClicked(MouseEvent e) {
 				textPaneMainResult.setText("0");
 				textPaneResult.setText("");
+				textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 22));
 			}
 		});
 		CE_Button.setMargin(new Insets(0,0,0,0));
@@ -196,6 +198,7 @@ public class mainWindow {
 			public void mouseClicked(MouseEvent e) {
 				textPaneMainResult.setText("0");
 				textPaneResult.setText("");
+				textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 22));
 			}
 		});
 		C_Button.setMargin(new Insets(0, 0, 0, 0));
@@ -279,6 +282,18 @@ public class mainWindow {
 		panelButton.add(button9, gbc_button9);
 		
 		JButton buttonDivinity = new JButton("/");
+		buttonDivinity.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				operationStr = "/";
+				//tempInputNumberStr = textPaneMainResult.getText();
+				inputNumber = Double.parseDouble(textPaneMainResult.getText());
+				textPaneResult.setText(operationStr + " " + textPaneMainResult.getText());
+				bool = true;
+				//textPaneMainResult.setText("0");
+				
+			}
+		});
 		buttonDivinity.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_buttonDivinity = new GridBagConstraints();
 		gbc_buttonDivinity.fill = GridBagConstraints.BOTH;
@@ -346,6 +361,17 @@ public class mainWindow {
 		panelButton.add(button6, gbc_button6);
 		
 		JButton buttonMultiplication = new JButton("*");
+		buttonMultiplication.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				operationStr = "*";
+				//tempInputNumberStr = textPaneMainResult.getText();
+				inputNumber = Double.parseDouble(textPaneMainResult.getText());
+				textPaneResult.setText(operationStr + " " + textPaneMainResult.getText());
+				bool = true;
+				//textPaneMainResult.setText("0");
+			}
+		});
 		buttonMultiplication.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_buttonMultiplication = new GridBagConstraints();
 		gbc_buttonMultiplication.fill = GridBagConstraints.BOTH;
@@ -409,6 +435,17 @@ public class mainWindow {
 		panelButton.add(button3, gbc_button3);
 		
 		JButton buttonMinus = new JButton("-");
+		buttonMinus.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				operationStr = "-";
+				//tempInputNumberStr = textPaneMainResult.getText();
+				inputNumber = Double.parseDouble(textPaneMainResult.getText());
+				textPaneResult.setText(operationStr + " " + textPaneMainResult.getText());
+				bool = true;
+				//textPaneMainResult.setText("0");
+			}
+		});
 		buttonMinus.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_buttonMinus = new GridBagConstraints();
 		gbc_buttonMinus.fill = GridBagConstraints.BOTH;
@@ -422,10 +459,36 @@ public class mainWindow {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				if (operation.equals("+")) {
+				char operationChar = operationStr.charAt(0);
+				
+				switch (operationChar) {
+				case '+':
 					textPaneMainResult.setText(String.valueOf(inputNumber + Double.parseDouble(textPaneMainResult.getText())));
 					bool = true;
+					break;
+				case '-':
+					textPaneMainResult.setText(String.valueOf(inputNumber - Double.parseDouble(textPaneMainResult.getText())));
+					bool = true;
+					break;
+				case '*':
+					textPaneMainResult.setText(String.valueOf(inputNumber * Double.parseDouble(textPaneMainResult.getText())));
+					bool = true;
+					break;
+				case '/':
+					if (!textPaneMainResult.getText().equals("0")) {
+						textPaneMainResult.setText(String.valueOf(inputNumber / Double.parseDouble(textPaneMainResult.getText())));
+						bool = true;
+						break;
+					} else {
+						textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 15));
+						textPaneMainResult.setText("Деление на 0 невозможно");
+						bool = true;
+						break;
+					}
+				default:
+					break;
 				}
+				
 			}
 		});
 		buttonEquall.setMargin(new Insets(0, 0, 0, 0));
@@ -470,10 +533,10 @@ public class mainWindow {
 			public void mouseClicked(MouseEvent e) {
 				
 				
-				operation = "+";
+				operationStr = "+";
 				//tempInputNumberStr = textPaneMainResult.getText();
 				inputNumber = Double.parseDouble(textPaneMainResult.getText());
-				textPaneResult.setText(operation + " " + textPaneMainResult.getText());
+				textPaneResult.setText(operationStr + " " + textPaneMainResult.getText());
 				bool = true;
 				//textPaneMainResult.setText("0");
 			}
