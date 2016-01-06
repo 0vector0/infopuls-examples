@@ -30,6 +30,9 @@ import java.awt.Dimension;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -129,6 +132,8 @@ public class mainWindow {
 		panelResult.setLayout(new BorderLayout(0, 0));
 		panelResult.setOpaque(false);
 		
+		
+		
 		textPaneResult.setText("");
 		textPaneResult.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		textPaneResult.setOpaque(false);
@@ -139,6 +144,14 @@ public class mainWindow {
 		textPaneMainResult.setOpaque(false);
 		
 		
+		///
+		//по правому краю но надо разобраться с шрифтами
+		//SimpleAttributeSet attribs = new SimpleAttributeSet();
+		//StyleConstants.setAlignment(attribs, StyleConstants.ALIGN_RIGHT);
+		//textPaneMainResult.setParagraphAttributes(attribs, true);
+		///
+		
+		
 		//textPaneResult.setBackground(Color.WHITE);
 			   // textPaneResult.setBounds(0, 0, 100, 100);
 		textPaneMainResult.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -147,6 +160,15 @@ public class mainWindow {
 		
 		panelResult.add(textPaneMainResult, BorderLayout.SOUTH);
 		textPaneMainResult.setText("0");
+		
+		///
+		
+		
+		//rightLabel.setHorizontalAlignment(JLabel.RIGHT);
+		
+		
+		///
+		
 		
 		JPanel panelButton = new JPanel();
 		panelButton.setBorder(new EmptyBorder(5, 0, 0, 0));
