@@ -230,6 +230,12 @@ public class mainWindow {
 		panelButton.add(sqrtButton, gbc_sqrtButton);
 		
 		JButton button7 = new JButton("7");
+		button7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("7");
+			}
+		});
 		button7.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_button7 = new GridBagConstraints();
 		gbc_button7.fill = GridBagConstraints.BOTH;
@@ -239,6 +245,12 @@ public class mainWindow {
 		panelButton.add(button7, gbc_button7);
 		
 		JButton button8 = new JButton("8");
+		button8.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("8");
+			}
+		});
 		button8.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_button8 = new GridBagConstraints();
 		gbc_button8.fill = GridBagConstraints.BOTH;
@@ -248,6 +260,12 @@ public class mainWindow {
 		panelButton.add(button8, gbc_button8);
 		
 		JButton button9 = new JButton("9");
+		button9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("9");
+			}
+		});
 		button9.setMargin(new Insets(0, 0, 0, 0));
 		button9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -283,6 +301,12 @@ public class mainWindow {
 		panelButton.add(buttonPercent, gbc_buttonPercent);
 		
 		JButton button4 = new JButton("4");
+		button4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("4");
+			}
+		});
 		button4.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_button4 = new GridBagConstraints();
 		gbc_button4.fill = GridBagConstraints.BOTH;
@@ -292,6 +316,12 @@ public class mainWindow {
 		panelButton.add(button4, gbc_button4);
 		
 		JButton button5 = new JButton("5");
+		button5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("5");
+			}
+		});
 		button5.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_button5 = new GridBagConstraints();
 		gbc_button5.fill = GridBagConstraints.BOTH;
@@ -301,6 +331,12 @@ public class mainWindow {
 		panelButton.add(button5, gbc_button5);
 		
 		JButton button6 = new JButton("6");
+		button6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("6");
+			}
+		});
 		button6.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_button6 = new GridBagConstraints();
 		gbc_button6.fill = GridBagConstraints.BOTH;
@@ -401,6 +437,15 @@ public class mainWindow {
 		panelButton.add(buttonEquall, gbc_buttonEquall);
 		
 		JButton button0 = new JButton("0");
+		button0.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (!textPaneMainResult.getText().equals("0")) {
+					buttonNumberClick("0");
+				}
+				
+			}
+		});
 		button0.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_button0 = new GridBagConstraints();
 		gbc_button0.fill = GridBagConstraints.BOTH;
@@ -423,6 +468,8 @@ public class mainWindow {
 		buttonPlus.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				
 				operation = "+";
 				//tempInputNumberStr = textPaneMainResult.getText();
 				inputNumber = Double.parseDouble(textPaneMainResult.getText());
