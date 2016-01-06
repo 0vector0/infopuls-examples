@@ -569,6 +569,4 @@ public class mainWindow {
 		textPaneMainResult.setText(textPaneMainResult.getText() + s);
 	}
 	
-//test
-	//test2
 }
