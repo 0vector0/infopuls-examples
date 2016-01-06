@@ -519,6 +519,11 @@ public class mainWindow {
 		panelButton.add(button0, gbc_button0);
 		
 		JButton buttonComa = new JButton(",");
+		buttonComa.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		buttonComa.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_buttonComa = new GridBagConstraints();
 		gbc_buttonComa.fill = GridBagConstraints.BOTH;
