@@ -79,7 +79,6 @@ public class mainWindow {
 		frame.setTitle("Калькулятор");
 		frame.setResizable(false);
 		frame.setSize(220, 310);
-		//frame.setBounds(100, 100, 230, 320);
 		frame.setLocationByPlatform(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -134,45 +133,26 @@ public class mainWindow {
 		
 		JPanel panelResultRight = new JPanel();
 		panelResultRight.setOpaque(false);
-		panelResultGeneral.add(panelResultRight, BorderLayout.EAST);
+		panelResultGeneral.add(panelResultRight, BorderLayout.NORTH);
 		panelResultRight.setLayout(new BorderLayout(0, 0));
-		panelResultRight.add(textPaneResult, BorderLayout.NORTH);
-		
-		
+		panelResultRight.add(textPaneResult, BorderLayout.EAST);
 		
 		textPaneResult.setText("");
 		textPaneResult.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		textPaneResult.setOpaque(false);
 		textPaneResult.setEditable(false);
-		panelResultRight.add(textPaneMainResult, BorderLayout.SOUTH);
 		
+		JPanel panelMainResultRight = new JPanel();
+		panelMainResultRight.setOpaque(false);
+		panelResultGeneral.add(panelMainResultRight, BorderLayout.SOUTH);
+		panelMainResultRight.setLayout(new BorderLayout(0, 0));
+		panelMainResultRight.add(textPaneMainResult, BorderLayout.EAST);
 		
 		textPaneMainResult.setOpaque(false);
-		
-		
-		///
-		//по правому краю но надо разобраться с шрифтами
-		//SimpleAttributeSet attribs = new SimpleAttributeSet();
-		//StyleConstants.setAlignment(attribs, StyleConstants.ALIGN_RIGHT);
-		//textPaneMainResult.setParagraphAttributes(attribs, true);
-		///
-		
-		
-		//textPaneResult.setBackground(Color.WHITE);
-			   // textPaneResult.setBounds(0, 0, 100, 100);
 		textPaneMainResult.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		textPaneMainResult.setEditable(false);
 		textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textPaneMainResult.setText("0");
-		
-		///
-		
-		
-		//rightLabel.setHorizontalAlignment(JLabel.RIGHT);
-		
-		
-		///
-		
 		
 		JPanel panelButton = new JPanel();
 		panelButton.setBorder(new EmptyBorder(5, 0, 0, 0));
@@ -184,6 +164,8 @@ public class mainWindow {
 		gbl_panelButton.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panelButton.setLayout(gbl_panelButton);
 		
+		
+		//top buttons
 		JButton backSpaceButton = new JButton("\u2190");
 		backSpaceButton.setMargin(new Insets(0,0,0,0));
 		backSpaceButton.addActionListener(new ActionListener() {
@@ -232,7 +214,7 @@ public class mainWindow {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		//C_Button.setMargin(new Insets(0,0,0,0));
+		
 		GridBagConstraints gbc_C_Button = new GridBagConstraints();
 		gbc_C_Button.fill = GridBagConstraints.BOTH;
 		gbc_C_Button.insets = new Insets(0, 0, 5, 5);
@@ -240,23 +222,116 @@ public class mainWindow {
 		gbc_C_Button.gridy = 0;
 		panelButton.add(C_Button, gbc_C_Button);
 		
-		JButton plusMinusButton = new JButton("\u00B1");
-		plusMinusButton.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_plusMinusButton = new GridBagConstraints();
-		gbc_plusMinusButton.fill = GridBagConstraints.BOTH;
-		gbc_plusMinusButton.insets = new Insets(0, 0, 5, 5);
-		gbc_plusMinusButton.gridx = 3;
-		gbc_plusMinusButton.gridy = 0;
-		panelButton.add(plusMinusButton, gbc_plusMinusButton);
 		
-		JButton sqrtButton = new JButton("\u221A");
-		sqrtButton.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_sqrtButton = new GridBagConstraints();
-		gbc_sqrtButton.fill = GridBagConstraints.BOTH;
-		gbc_sqrtButton.insets = new Insets(0, 0, 5, 0);
-		gbc_sqrtButton.gridx = 4;
-		gbc_sqrtButton.gridy = 0;
-		panelButton.add(sqrtButton, gbc_sqrtButton);
+		//number buttons
+		JButton button0 = new JButton("0");
+		button0.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (!textPaneMainResult.getText().equals("0")) {
+					buttonNumberClick("0");
+				}
+			}
+		});
+		button0.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_button0 = new GridBagConstraints();
+		gbc_button0.fill = GridBagConstraints.BOTH;
+		gbc_button0.gridwidth = 2;
+		gbc_button0.insets = new Insets(0, 0, 0, 5);
+		gbc_button0.gridx = 0;
+		gbc_button0.gridy = 4;
+		panelButton.add(button0, gbc_button0);
+		
+		JButton button1 = new JButton("1");
+		button1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("1");
+			}
+		});
+		button1.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_button1 = new GridBagConstraints();
+		gbc_button1.fill = GridBagConstraints.BOTH;
+		gbc_button1.insets = new Insets(0, 0, 5, 5);
+		gbc_button1.gridx = 0;
+		gbc_button1.gridy = 3;
+		panelButton.add(button1, gbc_button1);
+		
+		JButton button2 = new JButton("2");
+		button2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("2");
+			}
+		});
+		button2.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_button2 = new GridBagConstraints();
+		gbc_button2.fill = GridBagConstraints.BOTH;
+		gbc_button2.insets = new Insets(0, 0, 5, 5);
+		gbc_button2.gridx = 1;
+		gbc_button2.gridy = 3;
+		panelButton.add(button2, gbc_button2);
+		
+		JButton button3 = new JButton("3");
+		button3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("3");
+			}
+		});
+		button3.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_button3 = new GridBagConstraints();
+		gbc_button3.fill = GridBagConstraints.BOTH;
+		gbc_button3.insets = new Insets(0, 0, 5, 5);
+		gbc_button3.gridx = 2;
+		gbc_button3.gridy = 3;
+		panelButton.add(button3, gbc_button3);
+		
+		JButton button4 = new JButton("4");
+		button4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("4");
+			}
+		});
+		button4.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_button4 = new GridBagConstraints();
+		gbc_button4.fill = GridBagConstraints.BOTH;
+		gbc_button4.insets = new Insets(0, 0, 5, 5);
+		gbc_button4.gridx = 0;
+		gbc_button4.gridy = 2;
+		panelButton.add(button4, gbc_button4);
+		
+		JButton button5 = new JButton("5");
+		button5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("5");
+			}
+		});
+		button5.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_button5 = new GridBagConstraints();
+		gbc_button5.fill = GridBagConstraints.BOTH;
+		gbc_button5.insets = new Insets(0, 0, 5, 5);
+		gbc_button5.gridx = 1;
+		gbc_button5.gridy = 2;
+		panelButton.add(button5, gbc_button5);
+		
+		JButton button6 = new JButton("6");
+		button6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				buttonNumberClick("6");
+			}
+		});
+		button6.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_button6 = new GridBagConstraints();
+		gbc_button6.fill = GridBagConstraints.BOTH;
+		gbc_button6.insets = new Insets(0, 0, 5, 5);
+		gbc_button6.gridx = 2;
+		gbc_button6.gridy = 2;
+		panelButton.add(button6, gbc_button6);
+		
 		
 		JButton button7 = new JButton("7");
 		button7.addMouseListener(new MouseAdapter() {
@@ -307,12 +382,58 @@ public class mainWindow {
 		gbc_button9.gridy = 1;
 		panelButton.add(button9, gbc_button9);
 		
+		
+		//main operation buttons
+		JButton buttonPlus = new JButton("+");
+		buttonPlus.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setOPerationTextPaneResult("+");
+			}
+		});
+		buttonPlus.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_buttonPlus = new GridBagConstraints();
+		gbc_buttonPlus.fill = GridBagConstraints.BOTH;
+		gbc_buttonPlus.insets = new Insets(0, 0, 0, 5);
+		gbc_buttonPlus.gridx = 3;
+		gbc_buttonPlus.gridy = 4;
+		panelButton.add(buttonPlus, gbc_buttonPlus);
+		
+		JButton buttonMinus = new JButton("-");
+		buttonMinus.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setOPerationTextPaneResult("-");
+			}
+		});
+		buttonMinus.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_buttonMinus = new GridBagConstraints();
+		gbc_buttonMinus.fill = GridBagConstraints.BOTH;
+		gbc_buttonMinus.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonMinus.gridx = 3;
+		gbc_buttonMinus.gridy = 3;
+		panelButton.add(buttonMinus, gbc_buttonMinus);
+		
+		JButton buttonMultiplication = new JButton("*");
+		buttonMultiplication.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setOPerationTextPaneResult("*");
+			}
+		});
+		buttonMultiplication.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_buttonMultiplication = new GridBagConstraints();
+		gbc_buttonMultiplication.fill = GridBagConstraints.BOTH;
+		gbc_buttonMultiplication.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonMultiplication.gridx = 3;
+		gbc_buttonMultiplication.gridy = 2;
+		panelButton.add(buttonMultiplication, gbc_buttonMultiplication);
+		
 		JButton buttonDivinity = new JButton("/");
 		buttonDivinity.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setOPerationTextPaneResult("/");
-				
 			}
 		});
 		buttonDivinity.setMargin(new Insets(0, 0, 0, 0));
@@ -323,6 +444,7 @@ public class mainWindow {
 		gbc_buttonDivinity.gridy = 1;
 		panelButton.add(buttonDivinity, gbc_buttonDivinity);
 		
+		//another operation buttons
 		JButton buttonPercent = new JButton("\u0025");
 		buttonPercent.setMargin(new Insets(0, 0, 0, 0));
 		buttonPercent.addActionListener(new ActionListener() {
@@ -336,70 +458,23 @@ public class mainWindow {
 		gbc_buttonPercent.gridy = 1;
 		panelButton.add(buttonPercent, gbc_buttonPercent);
 		
-		JButton button4 = new JButton("4");
-		button4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				buttonNumberClick("4");
-			}
-		});
-		button4.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_button4 = new GridBagConstraints();
-		gbc_button4.fill = GridBagConstraints.BOTH;
-		gbc_button4.insets = new Insets(0, 0, 5, 5);
-		gbc_button4.gridx = 0;
-		gbc_button4.gridy = 2;
-		panelButton.add(button4, gbc_button4);
+		JButton plusMinusButton = new JButton("\u00B1");
+		plusMinusButton.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_plusMinusButton = new GridBagConstraints();
+		gbc_plusMinusButton.fill = GridBagConstraints.BOTH;
+		gbc_plusMinusButton.insets = new Insets(0, 0, 5, 5);
+		gbc_plusMinusButton.gridx = 3;
+		gbc_plusMinusButton.gridy = 0;
+		panelButton.add(plusMinusButton, gbc_plusMinusButton);
 		
-		JButton button5 = new JButton("5");
-		button5.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				buttonNumberClick("5");
-			}
-		});
-		button5.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_button5 = new GridBagConstraints();
-		gbc_button5.fill = GridBagConstraints.BOTH;
-		gbc_button5.insets = new Insets(0, 0, 5, 5);
-		gbc_button5.gridx = 1;
-		gbc_button5.gridy = 2;
-		panelButton.add(button5, gbc_button5);
-		
-		JButton button6 = new JButton("6");
-		button6.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				buttonNumberClick("6");
-			}
-		});
-		button6.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_button6 = new GridBagConstraints();
-		gbc_button6.fill = GridBagConstraints.BOTH;
-		gbc_button6.insets = new Insets(0, 0, 5, 5);
-		gbc_button6.gridx = 2;
-		gbc_button6.gridy = 2;
-		panelButton.add(button6, gbc_button6);
-		
-		JButton buttonMultiplication = new JButton("*");
-		buttonMultiplication.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				operationStr = "*";
-				//tempInputNumberStr = textPaneMainResult.getText();
-				inputNumber = Double.parseDouble(textPaneMainResult.getText());
-				textPaneResult.setText(operationStr + " " + textPaneMainResult.getText());
-				bool = true;
-				//textPaneMainResult.setText("0");
-			}
-		});
-		buttonMultiplication.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_buttonMultiplication = new GridBagConstraints();
-		gbc_buttonMultiplication.fill = GridBagConstraints.BOTH;
-		gbc_buttonMultiplication.insets = new Insets(0, 0, 5, 5);
-		gbc_buttonMultiplication.gridx = 3;
-		gbc_buttonMultiplication.gridy = 2;
-		panelButton.add(buttonMultiplication, gbc_buttonMultiplication);
+		JButton sqrtButton = new JButton("\u221A");
+		sqrtButton.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_sqrtButton = new GridBagConstraints();
+		gbc_sqrtButton.fill = GridBagConstraints.BOTH;
+		gbc_sqrtButton.insets = new Insets(0, 0, 5, 0);
+		gbc_sqrtButton.gridx = 4;
+		gbc_sqrtButton.gridy = 0;
+		panelButton.add(sqrtButton, gbc_sqrtButton);
 		
 		JButton button1DivinityX = new JButton("1/x");
 		button1DivinityX.setMargin(new Insets(0, 0, 0, 0));
@@ -409,92 +484,6 @@ public class mainWindow {
 		gbc_button1DivinityX.gridx = 4;
 		gbc_button1DivinityX.gridy = 2;
 		panelButton.add(button1DivinityX, gbc_button1DivinityX);
-		
-		JButton button1 = new JButton("1");
-		button1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				buttonNumberClick("1");
-			}
-		});
-		button1.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_button1 = new GridBagConstraints();
-		gbc_button1.fill = GridBagConstraints.BOTH;
-		gbc_button1.insets = new Insets(0, 0, 5, 5);
-		gbc_button1.gridx = 0;
-		gbc_button1.gridy = 3;
-		panelButton.add(button1, gbc_button1);
-		
-		JButton button2 = new JButton("2");
-		button2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				buttonNumberClick("2");
-			}
-		});
-		button2.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_button2 = new GridBagConstraints();
-		gbc_button2.fill = GridBagConstraints.BOTH;
-		gbc_button2.insets = new Insets(0, 0, 5, 5);
-		gbc_button2.gridx = 1;
-		gbc_button2.gridy = 3;
-		panelButton.add(button2, gbc_button2);
-		
-		JButton button3 = new JButton("3");
-		button3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				buttonNumberClick("3");
-			}
-		});
-		button3.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_button3 = new GridBagConstraints();
-		gbc_button3.fill = GridBagConstraints.BOTH;
-		gbc_button3.insets = new Insets(0, 0, 5, 5);
-		gbc_button3.gridx = 2;
-		gbc_button3.gridy = 3;
-		panelButton.add(button3, gbc_button3);
-		
-		JButton buttonMinus = new JButton("-");
-		buttonMinus.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				operationStr = "-";
-				//tempInputNumberStr = textPaneMainResult.getText();
-				inputNumber = Double.parseDouble(textPaneMainResult.getText());
-				textPaneResult.setText(operationStr + " " + textPaneMainResult.getText());
-				bool = true;
-				//textPaneMainResult.setText("0");
-			}
-		});
-		buttonMinus.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_buttonMinus = new GridBagConstraints();
-		gbc_buttonMinus.fill = GridBagConstraints.BOTH;
-		gbc_buttonMinus.insets = new Insets(0, 0, 5, 5);
-		gbc_buttonMinus.gridx = 3;
-		gbc_buttonMinus.gridy = 3;
-		panelButton.add(buttonMinus, gbc_buttonMinus);
-		
-		
-		
-		JButton button0 = new JButton("0");
-		button0.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (!textPaneMainResult.getText().equals("0")) {
-					buttonNumberClick("0");
-				}
-				
-			}
-		});
-		button0.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_button0 = new GridBagConstraints();
-		gbc_button0.fill = GridBagConstraints.BOTH;
-		gbc_button0.gridwidth = 2;
-		gbc_button0.insets = new Insets(0, 0, 0, 5);
-		gbc_button0.gridx = 0;
-		gbc_button0.gridy = 4;
-		panelButton.add(button0, gbc_button0);
 		
 		JButton buttonComa = new JButton(",");
 		buttonComa.addMouseListener(new MouseAdapter() {
@@ -510,32 +499,13 @@ public class mainWindow {
 		gbc_buttonComa.gridy = 4;
 		panelButton.add(buttonComa, gbc_buttonComa);
 		
-		
-		//operation buttons
-		JButton buttonPlus = new JButton("+");
-		buttonPlus.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				setOPerationTextPaneResult("+");
-			}
-		});
-		buttonPlus.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_buttonPlus = new GridBagConstraints();
-		gbc_buttonPlus.fill = GridBagConstraints.BOTH;
-		gbc_buttonPlus.insets = new Insets(0, 0, 0, 5);
-		gbc_buttonPlus.gridx = 3;
-		gbc_buttonPlus.gridy = 4;
-		panelButton.add(buttonPlus, gbc_buttonPlus);
-		
-		
+		//buttonEquall
 		JButton buttonEquall = new JButton("=");
 		buttonEquall.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
 				char operationChar = operationStr.charAt(0);
-				
 				switch (operationChar) {
 				case '+':
 					textPaneMainResult.setText(String.valueOf(inputNumber + Double.parseDouble(textPaneMainResult.getText())));
@@ -574,7 +544,6 @@ public class mainWindow {
 		gbc_buttonEquall.gridy = 3;
 		panelButton.add(buttonEquall, gbc_buttonEquall);
 		
-		
 	}
 	
 	void buttonNumberClick(String s){
@@ -599,3 +568,5 @@ public class mainWindow {
 	
 	
 }
+// other trash code for future
+//C_Button.setMargin(new Insets(0,0,0,0));
