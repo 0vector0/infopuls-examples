@@ -115,7 +115,7 @@ public class mainWindow {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panelResult = new JPanel()
+		JPanel panelResultGeneral = new JPanel()
 		{
 			 @Override
 		      protected void paintComponent(Graphics g) {
@@ -126,19 +126,25 @@ public class mainWindow {
 		        super.paintComponent(g);
 		      }
 		    };
-		panelResult.setPreferredSize(new Dimension(0, 55));
-		panelResult.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
-		panel.add(panelResult, BorderLayout.NORTH);
-		panelResult.setLayout(new BorderLayout(0, 0));
-		panelResult.setOpaque(false);
+		panelResultGeneral.setOpaque(false);
+		panelResultGeneral.setPreferredSize(new Dimension(0, 55));
+		panelResultGeneral.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
+		panel.add(panelResultGeneral, BorderLayout.NORTH);
+		panelResultGeneral.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panelResultRight = new JPanel();
+		panelResultRight.setOpaque(false);
+		panelResultGeneral.add(panelResultRight, BorderLayout.EAST);
+		panelResultRight.setLayout(new BorderLayout(0, 0));
+		panelResultRight.add(textPaneResult, BorderLayout.NORTH);
 		
 		
 		
 		textPaneResult.setText("");
-		textPaneResult.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		textPaneResult.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		textPaneResult.setOpaque(false);
 		textPaneResult.setEditable(false);
-		panelResult.add(textPaneResult, BorderLayout.NORTH);
+		panelResultRight.add(textPaneMainResult, BorderLayout.SOUTH);
 		
 		
 		textPaneMainResult.setOpaque(false);
@@ -154,11 +160,9 @@ public class mainWindow {
 		
 		//textPaneResult.setBackground(Color.WHITE);
 			   // textPaneResult.setBounds(0, 0, 100, 100);
-		textPaneMainResult.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		textPaneMainResult.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		textPaneMainResult.setEditable(false);
 		textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		
-		panelResult.add(textPaneMainResult, BorderLayout.SOUTH);
 		textPaneMainResult.setText("0");
 		
 		///
@@ -307,12 +311,7 @@ public class mainWindow {
 		buttonDivinity.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				operationStr = "/";
-				//tempInputNumberStr = textPaneMainResult.getText();
-				inputNumber = Double.parseDouble(textPaneMainResult.getText());
-				textPaneResult.setText(operationStr + " " + textPaneMainResult.getText());
-				bool = true;
-				//textPaneMainResult.setText("0");
+				setOPerationTextPaneResult("/");
 				
 			}
 		});
@@ -476,6 +475,60 @@ public class mainWindow {
 		gbc_buttonMinus.gridy = 3;
 		panelButton.add(buttonMinus, gbc_buttonMinus);
 		
+		
+		
+		JButton button0 = new JButton("0");
+		button0.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (!textPaneMainResult.getText().equals("0")) {
+					buttonNumberClick("0");
+				}
+				
+			}
+		});
+		button0.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_button0 = new GridBagConstraints();
+		gbc_button0.fill = GridBagConstraints.BOTH;
+		gbc_button0.gridwidth = 2;
+		gbc_button0.insets = new Insets(0, 0, 0, 5);
+		gbc_button0.gridx = 0;
+		gbc_button0.gridy = 4;
+		panelButton.add(button0, gbc_button0);
+		
+		JButton buttonComa = new JButton(",");
+		buttonComa.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		buttonComa.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_buttonComa = new GridBagConstraints();
+		gbc_buttonComa.fill = GridBagConstraints.BOTH;
+		gbc_buttonComa.insets = new Insets(0, 0, 0, 5);
+		gbc_buttonComa.gridx = 2;
+		gbc_buttonComa.gridy = 4;
+		panelButton.add(buttonComa, gbc_buttonComa);
+		
+		
+		//operation buttons
+		JButton buttonPlus = new JButton("+");
+		buttonPlus.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				setOPerationTextPaneResult("+");
+			}
+		});
+		buttonPlus.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_buttonPlus = new GridBagConstraints();
+		gbc_buttonPlus.fill = GridBagConstraints.BOTH;
+		gbc_buttonPlus.insets = new Insets(0, 0, 0, 5);
+		gbc_buttonPlus.gridx = 3;
+		gbc_buttonPlus.gridy = 4;
+		panelButton.add(buttonPlus, gbc_buttonPlus);
+		
+		
 		JButton buttonEquall = new JButton("=");
 		buttonEquall.addMouseListener(new MouseAdapter() {
 			@Override
@@ -521,61 +574,6 @@ public class mainWindow {
 		gbc_buttonEquall.gridy = 3;
 		panelButton.add(buttonEquall, gbc_buttonEquall);
 		
-		JButton button0 = new JButton("0");
-		button0.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (!textPaneMainResult.getText().equals("0")) {
-					buttonNumberClick("0");
-				}
-				
-			}
-		});
-		button0.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_button0 = new GridBagConstraints();
-		gbc_button0.fill = GridBagConstraints.BOTH;
-		gbc_button0.gridwidth = 2;
-		gbc_button0.insets = new Insets(0, 0, 0, 5);
-		gbc_button0.gridx = 0;
-		gbc_button0.gridy = 4;
-		panelButton.add(button0, gbc_button0);
-		
-		JButton buttonComa = new JButton(",");
-		buttonComa.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		buttonComa.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_buttonComa = new GridBagConstraints();
-		gbc_buttonComa.fill = GridBagConstraints.BOTH;
-		gbc_buttonComa.insets = new Insets(0, 0, 0, 5);
-		gbc_buttonComa.gridx = 2;
-		gbc_buttonComa.gridy = 4;
-		panelButton.add(buttonComa, gbc_buttonComa);
-		
-		JButton buttonPlus = new JButton("+");
-		buttonPlus.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				
-				operationStr = "+";
-				//tempInputNumberStr = textPaneMainResult.getText();
-				inputNumber = Double.parseDouble(textPaneMainResult.getText());
-				textPaneResult.setText(operationStr + " " + textPaneMainResult.getText());
-				bool = true;
-				//textPaneMainResult.setText("0");
-			}
-		});
-		buttonPlus.setMargin(new Insets(0, 0, 0, 0));
-		GridBagConstraints gbc_buttonPlus = new GridBagConstraints();
-		gbc_buttonPlus.fill = GridBagConstraints.BOTH;
-		gbc_buttonPlus.insets = new Insets(0, 0, 0, 5);
-		gbc_buttonPlus.gridx = 3;
-		gbc_buttonPlus.gridy = 4;
-		panelButton.add(buttonPlus, gbc_buttonPlus);
-		
 		
 	}
 	
@@ -590,5 +588,14 @@ public class mainWindow {
 		}
 		textPaneMainResult.setText(textPaneMainResult.getText() + s);
 	}
+	
+	void setOPerationTextPaneResult(String s){
+		operationStr = s;
+		inputNumber = Double.parseDouble(textPaneMainResult.getText());
+		textPaneResult.setText(textPaneMainResult.getText()  + " " + operationStr);
+		bool = true;
+		
+	}
+	
 	
 }
