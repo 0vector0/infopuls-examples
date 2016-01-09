@@ -35,6 +35,8 @@ import javax.swing.text.StyleConstants;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class mainWindow {
 
@@ -477,6 +479,12 @@ public class mainWindow {
 		panelButton.add(sqrtButton, gbc_sqrtButton);
 		
 		JButton button1DivinityX = new JButton("1/x");
+		button1DivinityX.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				textPaneMainResult.setText(setOutResultStr(textPaneMainResult.getText()));
+			}
+		});
 		button1DivinityX.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_button1DivinityX = new GridBagConstraints();
 		gbc_button1DivinityX.fill = GridBagConstraints.BOTH;
@@ -544,6 +552,9 @@ public class mainWindow {
 		gbc_buttonEquall.gridy = 3;
 		panelButton.add(buttonEquall, gbc_buttonEquall);
 		
+		
+		
+		
 	}
 	
 	void buttonNumberClick(String s){
@@ -566,6 +577,38 @@ public class mainWindow {
 		
 	}
 	
+	 String setOutResultStr(String strOut){
+		//strOut = "777.7776756765677";
+		
+		double doubleOut = Double.parseDouble(strOut);
+		double intTest = doubleOut % 1;
+		
+		if (intTest == 0) {
+			int res = (int) doubleOut;
+			strOut = String.valueOf(res);
+		} else { 
+			strOut = strOut.replace('.', ',');
+		}
+		int maxLengthStrOut = 15;
+		if (strOut.length() > maxLengthStrOut) {
+			strOut = strOut.substring(0, maxLengthStrOut);
+		}
+		
+		return strOut;
+		//textPaneMainResult.setText(strOut);
+		
+				
+		//String strTest2 = String.valueOf(doubleTest1);
+		//strTest2 = String.valueOf(doubleTest2).replace(',', '.');
+				
+		//String strTest2 = String.format("%.1f", doubleTest1);
+				
+				
+		//String strTest = String.format("%.1f", doubleTest1 + Double.parseDouble(strTest2)); 
+				
+				
+		//textPaneMainResult.setText(strTest);
+	}
 	
 }
 // other trash code for future
