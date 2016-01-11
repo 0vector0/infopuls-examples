@@ -26,6 +26,8 @@ public class MainClass {
     JButton buttonB = new JButton("FOCUS/RELEASE (VK_ENTER)");
     JButton buttonC = new JButton("ANCESTOR  (VK_F4+SHIFT_MASK)");
     JButton buttonD = new JButton("WINDOW (' ')");
+    JButton button1 = new JButton("1");
+    
 
     Action actionListener = new AbstractAction() {
       public void actionPerformed(ActionEvent actionEvent) {
@@ -56,12 +58,18 @@ public class MainClass {
     inputMap = buttonD.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
     inputMap.put(space, ACTION_KEY);
     buttonD.setActionMap(actionMap);
+    
+    KeyStroke button1KeyStroke = KeyStroke.getKeyStroke('1');
+    inputMap = button1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+    inputMap.put(button1KeyStroke, ACTION_KEY);
+    button1.setActionMap(actionMap);
 
     frame.setLayout(new GridLayout(2, 2));
     frame.add(buttonA);
     frame.add(buttonB);
     frame.add(buttonC);
     frame.add(buttonD);
+    frame.add(button1);
 
     frame.setSize(400, 200);
     frame.setVisible(true);

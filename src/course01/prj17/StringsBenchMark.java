@@ -63,5 +63,4 @@ public class StringsBenchMark {
 	      System.out.println("Elapsed Time is " + elapsedTime/1000 + " usec (Using StringBuidler's reverse() method)");
 	   }
 	   
-	   Pattern
 	}

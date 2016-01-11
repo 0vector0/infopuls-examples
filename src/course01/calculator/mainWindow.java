@@ -23,9 +23,16 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextPane;
+import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 import java.awt.Rectangle;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ActionMap;
 import javax.swing.BoxLayout;
+import javax.swing.InputMap;
+
 import java.awt.Dimension;
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -39,6 +46,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class mainWindow {
+	
+	//final  String strNumber1 = "1";
 
 	private JFrame frame;
 	double inputNumber = 0;
@@ -83,6 +92,7 @@ public class mainWindow {
 		frame.setSize(220, 310);
 		frame.setLocationByPlatform(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		String ACTION_KEY = "";
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -165,6 +175,9 @@ public class mainWindow {
 		gbl_panelButton.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_panelButton.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panelButton.setLayout(gbl_panelButton);
+		
+		
+		
 		
 		
 		//top buttons
@@ -251,6 +264,8 @@ public class mainWindow {
 				buttonNumberClick("1");
 			}
 		});
+		
+		
 		button1.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_button1 = new GridBagConstraints();
 		gbc_button1.fill = GridBagConstraints.BOTH;
@@ -258,6 +273,9 @@ public class mainWindow {
 		gbc_button1.gridx = 0;
 		gbc_button1.gridy = 3;
 		panelButton.add(button1, gbc_button1);
+		
+	
+		
 		
 		JButton button2 = new JButton("2");
 		button2.addMouseListener(new MouseAdapter() {
@@ -519,6 +537,7 @@ public class mainWindow {
 				double var1 = inputNumber;
 				double var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
 				char operationChar = operationStr.charAt(0);
+				textPaneResult.setText("");
 				switch (operationChar) {
 				case '+':{
 					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
@@ -618,6 +637,8 @@ public class mainWindow {
 				
 		//textPaneMainResult.setText(strTest);
 	}
+	 
+	 //keyboard Action
 	
 }
 // other trash code for future
