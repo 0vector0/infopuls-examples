@@ -516,20 +516,20 @@ public class mainWindow {
 				char operationChar = operationStr.charAt(0);
 				switch (operationChar) {
 				case '+':
-					textPaneMainResult.setText(String.valueOf(inputNumber + Double.parseDouble(textPaneMainResult.getText())));
+					textPaneMainResult.setText(setOutResultStr(String.valueOf(inputNumber + Double.parseDouble(textPaneMainResult.getText()))));
 					bool = true;
 					break;
 				case '-':
-					textPaneMainResult.setText(String.valueOf(inputNumber - Double.parseDouble(textPaneMainResult.getText())));
+					textPaneMainResult.setText(setOutResultStr(String.valueOf(inputNumber - Double.parseDouble(textPaneMainResult.getText()))));
 					bool = true;
 					break;
 				case '*':
-					textPaneMainResult.setText(String.valueOf(inputNumber * Double.parseDouble(textPaneMainResult.getText())));
+					textPaneMainResult.setText(setOutResultStr(String.valueOf(inputNumber * Double.parseDouble(textPaneMainResult.getText()))));
 					bool = true;
 					break;
 				case '/':
 					if (!textPaneMainResult.getText().equals("0")) {
-						textPaneMainResult.setText(String.valueOf(inputNumber / Double.parseDouble(textPaneMainResult.getText())));
+						textPaneMainResult.setText(setOutResultStr(String.valueOf(inputNumber / Double.parseDouble(textPaneMainResult.getText()))));
 						bool = true;
 						break;
 					} else {
