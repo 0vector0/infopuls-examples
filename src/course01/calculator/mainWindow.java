@@ -497,6 +497,10 @@ public class mainWindow {
 		buttonComa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				String strComa = textPaneMainResult.getText();
+				if (!strComa.contains(",")){
+				textPaneMainResult.setText(textPaneMainResult.getText() + ",");
+				}
 			}
 		});
 		buttonComa.setMargin(new Insets(0, 0, 0, 0));
