@@ -512,24 +512,27 @@ public class mainWindow {
 		buttonEquall.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				double var1 = inputNumber;
+				double var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
 				char operationChar = operationStr.charAt(0);
 				switch (operationChar) {
-				case '+':
-					textPaneMainResult.setText(setOutResultStr(String.valueOf(inputNumber + Double.parseDouble(textPaneMainResult.getText()))));
+				case '+':{
+					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
 					bool = true;
 					break;
-				case '-':
-					textPaneMainResult.setText(setOutResultStr(String.valueOf(inputNumber - Double.parseDouble(textPaneMainResult.getText()))));
+				}
+				case '-':{
+					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 - var2)));
 					bool = true;
 					break;
+				}
 				case '*':
-					textPaneMainResult.setText(setOutResultStr(String.valueOf(inputNumber * Double.parseDouble(textPaneMainResult.getText()))));
+					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 * var2)));
 					bool = true;
 					break;
 				case '/':
 					if (!textPaneMainResult.getText().equals("0")) {
-						textPaneMainResult.setText(setOutResultStr(String.valueOf(inputNumber / Double.parseDouble(textPaneMainResult.getText()))));
+						textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 / var2)));
 						bool = true;
 						break;
 					} else {
@@ -575,6 +578,12 @@ public class mainWindow {
 		textPaneResult.setText(textPaneMainResult.getText()  + " " + operationStr);
 		bool = true;
 		
+	}
+	
+	
+	String getOutResultStr(String strOut) {
+		strOut = strOut.replace(',', '.');
+		return strOut;
 	}
 	
 	 String setOutResultStr(String strOut){
