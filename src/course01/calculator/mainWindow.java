@@ -482,7 +482,7 @@ public class mainWindow {
 		button1DivinityX.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				textPaneMainResult.setText(setOutResultStr(textPaneMainResult.getText()));
+				//textPaneMainResult.setText(setOutResultStr(textPaneMainResult.getText()));
 			}
 		});
 		button1DivinityX.setMargin(new Insets(0, 0, 0, 0));
@@ -558,10 +558,6 @@ public class mainWindow {
 		gbc_buttonEquall.gridx = 4;
 		gbc_buttonEquall.gridy = 3;
 		panelButton.add(buttonEquall, gbc_buttonEquall);
-		
-		
-		
-		
 	}
 	
 	void buttonNumberClick(String s){
