@@ -1,4 +1,4 @@
-package course01.calculator;
+package course01.calculatorTest;
 
 public class testClass {
 

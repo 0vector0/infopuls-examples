@@ -1,4 +1,4 @@
-package course01.calculator;
+package course01.calculatorTest;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
