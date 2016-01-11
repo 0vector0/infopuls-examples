@@ -578,8 +578,8 @@ public class mainWindow {
 	
 	void setOPerationTextPaneResult(String s){
 		operationStr = s;
-		inputNumber = Double.parseDouble(textPaneMainResult.getText());
-		textPaneResult.setText(textPaneMainResult.getText()  + " " + operationStr);
+		inputNumber = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
+		textPaneResult.setText(setOutResultStr(textPaneMainResult.getText())  + " " + operationStr);
 		bool = true;
 		
 	}
