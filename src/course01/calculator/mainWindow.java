@@ -598,7 +598,57 @@ public class mainWindow {
 		actionMap = button3.getActionMap();
 		button3.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke button4KeyStroke = KeyStroke.getKeyStroke('4');
+		inputMap = button4.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(button4KeyStroke, ACTION_KEY);
+		inputMap = button4.getInputMap();
+		actionMap = button4.getActionMap();
+		button4.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke button5KeyStroke = KeyStroke.getKeyStroke('5');
+		inputMap = button5.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(button5KeyStroke, ACTION_KEY);
+		inputMap = button5.getInputMap();
+		actionMap = button5.getActionMap();
+		button5.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke button6KeyStroke = KeyStroke.getKeyStroke('6');
+		inputMap = button6.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(button6KeyStroke, ACTION_KEY);
+		inputMap = button6.getInputMap();
+		actionMap = button6.getActionMap();
+		button6.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke button7KeyStroke = KeyStroke.getKeyStroke('7');
+		inputMap = button7.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(button7KeyStroke, ACTION_KEY);
+		inputMap = button7.getInputMap();
+		actionMap = button7.getActionMap();
+		button7.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke button8KeyStroke = KeyStroke.getKeyStroke('8');
+		inputMap = button8.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(button8KeyStroke, ACTION_KEY);
+		inputMap = button8.getInputMap();
+		actionMap = button8.getActionMap();
+		button8.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke button9KeyStroke = KeyStroke.getKeyStroke('9');
+		inputMap = button9.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(button9KeyStroke, ACTION_KEY);
+		inputMap = button9.getInputMap();
+		actionMap = button9.getActionMap();
+		button9.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
 	}
+	
 
 	void buttonNumberClick(String s) {
 		if (bool) {
