@@ -579,6 +579,9 @@ public class mainWindow {
 					C_ButtonMethod();
 					break;
 				}
+				case '←': {
+					backSpaceButtonMethod();
+				}
 				default:
 					break;
 				}
@@ -728,6 +731,14 @@ public class mainWindow {
 		inputMap = C_Button.getInputMap();
 		actionMap = C_Button.getActionMap();
 		C_Button.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke backSpaceButtonKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, 0, true);
+		inputMap = backSpaceButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(backSpaceButtonKeyStroke, ACTION_KEY);
+		inputMap = backSpaceButton.getInputMap();
+		actionMap = backSpaceButton.getActionMap();
+		backSpaceButton.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
 
 	}
