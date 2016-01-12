@@ -59,9 +59,6 @@ public class mainWindow {
 	JTextPane textPaneResult = new JTextPane();
 	JTextPane textPaneMainResult = new JTextPane();
 
-	JButton button1 = new JButton("1");
-	JButton button2 = new JButton("2");
-
 	/**
 	 * Launch the application.
 	 */
@@ -95,6 +92,7 @@ public class mainWindow {
 		frame.setSize(220, 310);
 		frame.setLocationByPlatform(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setFocusable(true);
 		String ACTION_KEY = "";
 
 		JMenuBar menuBar = new JMenuBar();
@@ -252,7 +250,8 @@ public class mainWindow {
 		gbc_button0.gridx = 0;
 		gbc_button0.gridy = 4;
 		panelButton.add(button0, gbc_button0);
-
+		
+		JButton button1 = new JButton("1");
 		button1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -267,7 +266,8 @@ public class mainWindow {
 		gbc_button1.gridx = 0;
 		gbc_button1.gridy = 3;
 		panelButton.add(button1, gbc_button1);
-
+		
+		JButton button2 = new JButton("2");
 		button2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -589,6 +589,14 @@ public class mainWindow {
 		inputMap = button2.getInputMap();
 		actionMap = button2.getActionMap();
 		button2.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke button3KeyStroke = KeyStroke.getKeyStroke('3');
+		inputMap = button3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(button3KeyStroke, ACTION_KEY);
+		inputMap = button3.getInputMap();
+		actionMap = button3.getActionMap();
+		button3.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
 	}
 
