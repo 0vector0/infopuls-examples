@@ -14,6 +14,7 @@ import java.awt.Insets;
 import java.awt.Paint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -237,9 +238,7 @@ public class mainWindow {
 		button0.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (!textPaneMainResult.getText().equals("0")) {
-					buttonNumberClick("0");
-				}
+				button0NumberClick();
 			}
 		});
 		button0.setMargin(new Insets(0, 0, 0, 0));
@@ -250,7 +249,7 @@ public class mainWindow {
 		gbc_button0.gridx = 0;
 		gbc_button0.gridy = 4;
 		panelButton.add(button0, gbc_button0);
-		
+
 		JButton button1 = new JButton("1");
 		button1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -266,7 +265,7 @@ public class mainWindow {
 		gbc_button1.gridx = 0;
 		gbc_button1.gridy = 3;
 		panelButton.add(button1, gbc_button1);
-		
+
 		JButton button2 = new JButton("2");
 		button2.addMouseListener(new MouseAdapter() {
 			@Override
@@ -522,40 +521,7 @@ public class mainWindow {
 		buttonEquall.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				double var1 = inputNumber;
-				double var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
-				char operationChar = operationStr.charAt(0);
-				textPaneResult.setText("");
-				switch (operationChar) {
-				case '+': {
-					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
-					bool = true;
-					break;
-				}
-				case '-': {
-					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 - var2)));
-					bool = true;
-					break;
-				}
-				case '*':
-					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 * var2)));
-					bool = true;
-					break;
-				case '/':
-					if (!textPaneMainResult.getText().equals("0")) {
-						textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 / var2)));
-						bool = true;
-						break;
-					} else {
-						textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 15));
-						textPaneMainResult.setText("Деление на 0 невозможно");
-						bool = true;
-						break;
-					}
-				default:
-					break;
-				}
-
+				buttonEquallMethod();
 			}
 		});
 		buttonEquall.setMargin(new Insets(0, 0, 0, 0));
@@ -570,9 +536,44 @@ public class mainWindow {
 		Action actionListenerButtonNumber = new AbstractAction() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				JButton source = (JButton) actionEvent.getSource();
-				buttonNumberClick(source.getText());
-				// System.out.println("Activated: " + source.getText());
+				System.out.println(source.getText());
+				String tempStr = source.getText();
+				char ch = tempStr.charAt(0);
+				
+				if (ch >= '1' && ch <= '9') {
+					buttonNumberClick(tempStr);
+				}
+				switch (ch) {
+				case '0': {
+					button0NumberClick();
+					break;
+				}
+				case '+':{
+					setOPerationTextPaneResult("+");
+					break;
+				}
+				case '-':{
+					setOPerationTextPaneResult("-");
+					break;
+				}
+				case '*':{
+					setOPerationTextPaneResult("*");
+					break;
+				}
+				case '/':{
+					setOPerationTextPaneResult("/");
+					break;
+					
+				}
+				case '=':{
+					buttonEquallMethod();
+					break;
+				}
+				default:
+					break;
+				}
 			}
+			// System.out.println("Activated: " + source.getText());
 		};
 
 		KeyStroke button1KeyStroke = KeyStroke.getKeyStroke('1');
@@ -590,7 +591,7 @@ public class mainWindow {
 		actionMap = button2.getActionMap();
 		button2.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
-		
+
 		KeyStroke button3KeyStroke = KeyStroke.getKeyStroke('3');
 		inputMap = button3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		inputMap.put(button3KeyStroke, ACTION_KEY);
@@ -598,7 +599,7 @@ public class mainWindow {
 		actionMap = button3.getActionMap();
 		button3.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
-		
+
 		KeyStroke button4KeyStroke = KeyStroke.getKeyStroke('4');
 		inputMap = button4.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		inputMap.put(button4KeyStroke, ACTION_KEY);
@@ -606,7 +607,7 @@ public class mainWindow {
 		actionMap = button4.getActionMap();
 		button4.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
-		
+
 		KeyStroke button5KeyStroke = KeyStroke.getKeyStroke('5');
 		inputMap = button5.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		inputMap.put(button5KeyStroke, ACTION_KEY);
@@ -614,7 +615,7 @@ public class mainWindow {
 		actionMap = button5.getActionMap();
 		button5.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
-		
+
 		KeyStroke button6KeyStroke = KeyStroke.getKeyStroke('6');
 		inputMap = button6.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		inputMap.put(button6KeyStroke, ACTION_KEY);
@@ -622,7 +623,7 @@ public class mainWindow {
 		actionMap = button6.getActionMap();
 		button6.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
-		
+
 		KeyStroke button7KeyStroke = KeyStroke.getKeyStroke('7');
 		inputMap = button7.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		inputMap.put(button7KeyStroke, ACTION_KEY);
@@ -630,7 +631,7 @@ public class mainWindow {
 		actionMap = button7.getActionMap();
 		button7.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
-		
+
 		KeyStroke button8KeyStroke = KeyStroke.getKeyStroke('8');
 		inputMap = button8.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		inputMap.put(button8KeyStroke, ACTION_KEY);
@@ -638,7 +639,7 @@ public class mainWindow {
 		actionMap = button8.getActionMap();
 		button8.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
-		
+
 		KeyStroke button9KeyStroke = KeyStroke.getKeyStroke('9');
 		inputMap = button9.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		inputMap.put(button9KeyStroke, ACTION_KEY);
@@ -646,9 +647,65 @@ public class mainWindow {
 		actionMap = button9.getActionMap();
 		button9.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+
+		KeyStroke button0KeyStroke = KeyStroke.getKeyStroke('0');
+		inputMap = button0.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(button0KeyStroke, ACTION_KEY);
+		inputMap = button0.getInputMap();
+		actionMap = button0.getActionMap();
+		button0.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
 		
+		KeyStroke buttonPlusKeyStroke = KeyStroke.getKeyStroke('+');
+		inputMap = buttonPlus.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(buttonPlusKeyStroke, ACTION_KEY);
+		inputMap = buttonPlus.getInputMap();
+		actionMap = buttonPlus.getActionMap();
+		buttonPlus.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke buttonMinusKeyStroke = KeyStroke.getKeyStroke('-');
+		inputMap = buttonMinus.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(buttonMinusKeyStroke, ACTION_KEY);
+		inputMap = buttonMinus.getInputMap();
+		actionMap = buttonMinus.getActionMap();
+		buttonMinus.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke buttonMultiplicationKeyStroke = KeyStroke.getKeyStroke('*');
+		inputMap = buttonMultiplication.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(buttonMultiplicationKeyStroke, ACTION_KEY);
+		inputMap = buttonMultiplication.getInputMap();
+		actionMap = buttonMultiplication.getActionMap();
+		buttonMultiplication.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke buttonDivinityKeyStroke = KeyStroke.getKeyStroke('/');
+		inputMap = buttonDivinity.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(buttonDivinityKeyStroke, ACTION_KEY);
+		inputMap = buttonDivinity.getInputMap();
+		actionMap = buttonDivinity.getActionMap();
+		buttonDivinity.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke buttonEquallKeyStroke = KeyStroke.getKeyStroke('=');
+		inputMap = buttonEquall.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(buttonEquallKeyStroke, ACTION_KEY);
+		inputMap = buttonEquall.getInputMap();
+		actionMap = buttonEquall.getActionMap();
+		buttonEquall.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke buttonEnterKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true);
+		inputMap = buttonEquall.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(buttonEnterKeyStroke, ACTION_KEY);
+		inputMap = buttonEquall.getInputMap();
+		actionMap = buttonEquall.getActionMap();
+		buttonEquall.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+
 	}
-	
 
 	void buttonNumberClick(String s) {
 		if (bool) {
@@ -661,12 +718,54 @@ public class mainWindow {
 		textPaneMainResult.setText(textPaneMainResult.getText() + s);
 	}
 
+	void button0NumberClick() {
+		if (!textPaneMainResult.getText().equals("0")) {
+			buttonNumberClick("0");
+		}
+	}
+
 	void setOPerationTextPaneResult(String s) {
 		operationStr = s;
 		inputNumber = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
 		textPaneResult.setText(setOutResultStr(getOutResultStr(textPaneMainResult.getText())) + " " + operationStr);
 		bool = true;
 
+	}
+
+	void buttonEquallMethod() {
+		double var1 = inputNumber;
+		double var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
+		char operationChar = operationStr.charAt(0);
+		textPaneResult.setText("");
+		switch (operationChar) {
+		case '+': {
+			textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
+			bool = true;
+			break;
+		}
+		case '-': {
+			textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 - var2)));
+			bool = true;
+			break;
+		}
+		case '*':
+			textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 * var2)));
+			bool = true;
+			break;
+		case '/':
+			if (!textPaneMainResult.getText().equals("0")) {
+				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 / var2)));
+				bool = true;
+				break;
+			} else {
+				textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				textPaneMainResult.setText("Деление на 0 невозможно");
+				bool = true;
+				break;
+			}
+		default:
+			break;
+		}
 	}
 
 	String getOutResultStr(String strOut) {
