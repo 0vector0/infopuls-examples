@@ -43,12 +43,12 @@ class ActionFrame extends JFrame {
 				textPane.setText("1");
 			}
 		};
-		Action button2Action = new AbstractAction() {
+		/*Action button2Action = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				textPane.setText("2");
 			}
-		};
+		};*/
 
 		// Добавление кнопок для действий.
 		buttonPanel.add(new JButton("1"));
@@ -61,12 +61,14 @@ class ActionFrame extends JFrame {
 		add(buttonPanel);
 		// Связывание клавиш Y, B и R с именами.
 		InputMap imap = buttonPanel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		String str = "1";
 		imap.put(KeyStroke.getKeyStroke("1"), "panel1");
-		imap.put(KeyStroke.getKeyStroke("2"), "panel2");
+		//imap.get()
+		imap.put(KeyStroke.getKeyStroke("2"), "panel1");
 		// Связывание имен с действиями.
 		ActionMap amap = buttonPanel.getActionMap();
 		amap.put("panel1", button1Action);
-		amap.put("panel2", button2Action);
+		//amap.put("panel2", button2Action);
 	}
 
 }

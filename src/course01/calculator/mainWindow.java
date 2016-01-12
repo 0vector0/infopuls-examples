@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -48,7 +49,7 @@ import java.math.RoundingMode;
 public class mainWindow {
 	
 	//final  String strNumber1 = "1";
-
+	String ACTION_KEY = "The Action";
 	private JFrame frame;
 	double inputNumber = 0;
 	String tempInputNumberStr;
@@ -57,6 +58,10 @@ public class mainWindow {
 	
 	JTextPane textPaneResult = new JTextPane();
 	JTextPane textPaneMainResult = new JTextPane();
+	
+	JButton button1 = new JButton("1");
+	JButton button2 = new JButton("2");
+	
 	
 
 	/**
@@ -257,7 +262,7 @@ public class mainWindow {
 		gbc_button0.gridy = 4;
 		panelButton.add(button0, gbc_button0);
 		
-		JButton button1 = new JButton("1");
+		
 		button1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -277,7 +282,7 @@ public class mainWindow {
 	
 		
 		
-		JButton button2 = new JButton("2");
+		
 		button2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -577,6 +582,33 @@ public class mainWindow {
 		gbc_buttonEquall.gridx = 4;
 		gbc_buttonEquall.gridy = 3;
 		panelButton.add(buttonEquall, gbc_buttonEquall);
+		
+		//keyboard Action
+		 Action actionListener = new AbstractAction() {
+		      public void actionPerformed(ActionEvent actionEvent) {
+		        JButton source = (JButton) actionEvent.getSource();
+		       // jTextPane.setText(source.getText());
+		        buttonNumberClick(source.getText());
+		       // System.out.println("Activated: " + source.getText());
+		      }
+		    };
+		    
+		   KeyStroke button1KeyStroke = KeyStroke.getKeyStroke('1');
+		    InputMap inputMap = button1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		    inputMap.put(button1KeyStroke, ACTION_KEY);
+		    inputMap = button1.getInputMap();
+		    ActionMap actionMap = button1.getActionMap();
+		    button1.setActionMap(actionMap);
+		    actionMap.put(ACTION_KEY, actionListener);
+		    
+		    KeyStroke button2KeyStroke = KeyStroke.getKeyStroke('2');
+		    inputMap = button2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		    inputMap.put(button2KeyStroke, ACTION_KEY);
+		    inputMap = button2.getInputMap();
+		    actionMap = button2.getActionMap();
+		   button2.setActionMap(actionMap);
+		   actionMap.put(ACTION_KEY, actionListener);
+		
 	}
 	
 	void buttonNumberClick(String s){
@@ -623,6 +655,7 @@ public class mainWindow {
 		}
 		
 		return strOut;
+	 }
 		//textPaneMainResult.setText(strOut);
 		
 				
@@ -636,10 +669,10 @@ public class mainWindow {
 				
 				
 		//textPaneMainResult.setText(strTest);
-	}
-	 
-	 //keyboard Action
+		
+		 
 	
 }
+
 // other trash code for future
-//C_Button.setMargin(new Insets(0,0,0,0));
+// C_Button.setMargin(new Insets(0,0,0,0));
