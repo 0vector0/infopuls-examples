@@ -49,7 +49,6 @@ import java.math.RoundingMode;
 
 public class mainWindow {
 
-	// final String strNumber1 = "1";
 	String ACTION_KEY = "The Action";
 	private JFrame frame;
 	double inputNumber = 0;
@@ -761,8 +760,6 @@ public class mainWindow {
 	void setOPerationTextPaneResult(String s) {
 		operationStr = s;
 		var1 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
-		// inputNumber =
-		// Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
 		textPaneResult.setText(setOutResultStr(getOutResultStr(textPaneMainResult.getText())) + " " + operationStr);
 		bool = true;
 
@@ -778,38 +775,37 @@ public class mainWindow {
 			var1 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
 		}
 
-			char operationChar = operationStr.charAt(0);
+		char operationChar = operationStr.charAt(0);
 
-			textPaneResult.setText("");
-			switch (operationChar) {
-			case '+': {
-				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
+		textPaneResult.setText("");
+		switch (operationChar) {
+		case '+': {
+			textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
+			bool = true;
+			break;
+		}
+		case '-': {
+			textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 - var2)));
+			bool = true;
+			break;
+		}
+		case '*':
+			textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 * var2)));
+			bool = true;
+			break;
+		case '/':
+			if (!textPaneMainResult.getText().equals("0")) {
+				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 / var2)));
+				bool = true;
+				break;
+			} else {
+				textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				textPaneMainResult.setText("Деление на 0 невозможно");
 				bool = true;
 				break;
 			}
-			case '-': {
-				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 - var2)));
-				bool = true;
-				break;
-			}
-			case '*':
-				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 * var2)));
-				bool = true;
-				break;
-			case '/':
-				if (!textPaneMainResult.getText().equals("0")) {
-					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 / var2)));
-					bool = true;
-					break;
-				} else {
-					textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 15));
-					textPaneMainResult.setText("Деление на 0 невозможно");
-					bool = true;
-					break;
-				}
-			default:
-				break;
-			
+		default:
+			break;
 		}
 	}
 
