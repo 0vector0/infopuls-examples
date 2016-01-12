@@ -773,51 +773,49 @@ public class mainWindow {
 	}
 
 	void buttonEquallMethod() {
-		
+
 		if (!textPaneMainResult.getText().equals(DIVISION_BY_ZERO)) {
-			
-		
 
-		if (!textPaneResult.getText().equals("")) {
-			var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
-			tempVar = var2;
-		} else {
-			var2 = tempVar;
-			var1 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
-		}
-
-		char operationChar = operationStr.charAt(0);
-
-		textPaneResult.setText("");
-		switch (operationChar) {
-		case '+': {
-			textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
-			bool = true;
-			break;
-		}
-		case '-': {
-			textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 - var2)));
-			bool = true;
-			break;
-		}
-		case '*':
-			textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 * var2)));
-			bool = true;
-			break;
-		case '/':
-			if (!textPaneMainResult.getText().equals("0")) {
-				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 / var2)));
-				bool = true;
-				break;
+			if (!textPaneResult.getText().equals("")) {
+				var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
+				tempVar = var2;
 			} else {
-				textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 15));
-				textPaneMainResult.setText(DIVISION_BY_ZERO);
+				var2 = tempVar;
+				var1 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
+			}
+
+			char operationChar = operationStr.charAt(0);
+
+			textPaneResult.setText("");
+			switch (operationChar) {
+			case '+': {
+				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
 				bool = true;
 				break;
 			}
-		default:
-			break;
-		}
+			case '-': {
+				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 - var2)));
+				bool = true;
+				break;
+			}
+			case '*':
+				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 * var2)));
+				bool = true;
+				break;
+			case '/':
+				if (!textPaneMainResult.getText().equals("0")) {
+					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 / var2)));
+					bool = true;
+					break;
+				} else {
+					textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 15));
+					textPaneMainResult.setText(DIVISION_BY_ZERO);
+					bool = true;
+					break;
+				}
+			default:
+				break;
+			}
 		}
 	}
 
@@ -841,8 +839,13 @@ public class mainWindow {
 		}
 		return strOut;
 	}
-	
-	void backSpaceButtonMethod(){
+
+	void backSpaceButtonMethod() {
 		StringBuffer bufferStr = new StringBuffer(textPaneMainResult.getText());
+		if (bufferStr.length() == 1) {
+			bufferStr = bufferStr.replace(0, 0, "0");
+		}
+		bufferStr = bufferStr.deleteCharAt(bufferStr.length() - 1);
+		textPaneMainResult.setText(bufferStr.toString());
 	}
 }
