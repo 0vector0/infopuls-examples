@@ -502,10 +502,7 @@ public class mainWindow {
 		buttonComa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String strComa = textPaneMainResult.getText();
-				if (!strComa.contains(",")) {
-					textPaneMainResult.setText(textPaneMainResult.getText() + ",");
-				}
+				buttonComaMethod();
 			}
 		});
 		buttonComa.setMargin(new Insets(0, 0, 0, 0));
@@ -563,10 +560,13 @@ public class mainWindow {
 				case '/':{
 					setOPerationTextPaneResult("/");
 					break;
-					
 				}
 				case '=':{
 					buttonEquallMethod();
+					break;
+				}
+				case ',':{
+					buttonComaMethod();
 					break;
 				}
 				default:
@@ -704,6 +704,13 @@ public class mainWindow {
 		buttonEquall.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
 		
+		KeyStroke buttonComaKeyStroke = KeyStroke.getKeyStroke(',');
+		inputMap = buttonComa.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(buttonComaKeyStroke, ACTION_KEY);
+		inputMap = buttonComa.getInputMap();
+		actionMap = buttonComa.getActionMap();
+		buttonComa.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
 
 	}
 
@@ -724,6 +731,13 @@ public class mainWindow {
 		}
 	}
 
+	void buttonComaMethod(){
+		String strComa = textPaneMainResult.getText();
+		if (!strComa.contains(",")) {
+			textPaneMainResult.setText(textPaneMainResult.getText() + ",");
+		}
+	}
+	
 	void setOPerationTextPaneResult(String s) {
 		operationStr = s;
 		inputNumber = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
