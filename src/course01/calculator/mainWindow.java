@@ -47,22 +47,20 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class mainWindow {
-	
-	//final  String strNumber1 = "1";
+
+	// final String strNumber1 = "1";
 	String ACTION_KEY = "The Action";
 	private JFrame frame;
 	double inputNumber = 0;
 	String tempInputNumberStr;
 	String operationStr;
 	boolean bool = false;
-	
+
 	JTextPane textPaneResult = new JTextPane();
 	JTextPane textPaneMainResult = new JTextPane();
-	
+
 	JButton button1 = new JButton("1");
 	JButton button2 = new JButton("2");
-	
-	
 
 	/**
 	 * Launch the application.
@@ -98,96 +96,90 @@ public class mainWindow {
 		frame.setLocationByPlatform(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		String ACTION_KEY = "";
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
-		
+
 		JMenu mnNewMenu = new JMenu("Вид");
 		menuBar.add(mnNewMenu);
-		
+
 		JMenu menu = new JMenu("Правка");
 		menuBar.add(menu);
-		
+
 		JMenuItem menuItem_2 = new JMenuItem("Копировать");
 		menu.add(menuItem_2);
-		
+
 		JMenuItem menuItem_3 = new JMenuItem("Вставить");
 		menu.add(menuItem_3);
-		
+
 		JMenu menu_1 = new JMenu("Справка");
 		menuBar.add(menu_1);
-		
+
 		JMenuItem menuItem = new JMenuItem("Посмотреть справку");
 		menu_1.add(menuItem);
-		
+
 		JSeparator separator = new JSeparator();
 		menu_1.add(separator);
-		
+
 		JMenuItem menuItem_1 = new JMenuItem("О программе");
 		menu_1.add(menuItem_1);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panelResultGeneral = new JPanel()
-		{
-			 @Override
-		      protected void paintComponent(Graphics g) {
-		        Paint paint = new GradientPaint(0, 0, new Color(229, 239, 251),
-		                0, getHeight(), Color.white, true);
-		        ((Graphics2D) g).setPaint(paint);
-		        g.fillRect(0, 0, getWidth(), getHeight());
-		        super.paintComponent(g);
-		      }
-		    };
+
+		JPanel panelResultGeneral = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				Paint paint = new GradientPaint(0, 0, new Color(229, 239, 251), 0, getHeight(), Color.white, true);
+				((Graphics2D) g).setPaint(paint);
+				g.fillRect(0, 0, getWidth(), getHeight());
+				super.paintComponent(g);
+			}
+		};
 		panelResultGeneral.setOpaque(false);
 		panelResultGeneral.setPreferredSize(new Dimension(0, 55));
 		panelResultGeneral.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 		panel.add(panelResultGeneral, BorderLayout.NORTH);
 		panelResultGeneral.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panelResultRight = new JPanel();
 		panelResultRight.setOpaque(false);
 		panelResultGeneral.add(panelResultRight, BorderLayout.NORTH);
 		panelResultRight.setLayout(new BorderLayout(0, 0));
 		panelResultRight.add(textPaneResult, BorderLayout.EAST);
-		
+
 		textPaneResult.setText("");
 		textPaneResult.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		textPaneResult.setOpaque(false);
 		textPaneResult.setEditable(false);
-		
+
 		JPanel panelMainResultRight = new JPanel();
 		panelMainResultRight.setOpaque(false);
 		panelResultGeneral.add(panelMainResultRight, BorderLayout.SOUTH);
 		panelMainResultRight.setLayout(new BorderLayout(0, 0));
 		panelMainResultRight.add(textPaneMainResult, BorderLayout.EAST);
-		
+
 		textPaneMainResult.setOpaque(false);
 		textPaneMainResult.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		textPaneMainResult.setEditable(false);
 		textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textPaneMainResult.setText("0");
-		
+
 		JPanel panelButton = new JPanel();
 		panelButton.setBorder(new EmptyBorder(5, 0, 0, 0));
 		panel.add(panelButton, BorderLayout.CENTER);
 		GridBagLayout gbl_panelButton = new GridBagLayout();
-		gbl_panelButton.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
-		gbl_panelButton.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
-		gbl_panelButton.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panelButton.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelButton.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_panelButton.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_panelButton.columnWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_panelButton.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		panelButton.setLayout(gbl_panelButton);
-		
-		
-		
-		
-		
-		//top buttons
+
+		// top buttons
 		JButton backSpaceButton = new JButton("\u2190");
-		backSpaceButton.setMargin(new Insets(0,0,0,0));
+		backSpaceButton.setMargin(new Insets(0, 0, 0, 0));
 		backSpaceButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -198,7 +190,7 @@ public class mainWindow {
 		gbc_backSpaceButton.gridx = 0;
 		gbc_backSpaceButton.gridy = 0;
 		panelButton.add(backSpaceButton, gbc_backSpaceButton);
-		
+
 		JButton CE_Button = new JButton("CE");
 		CE_Button.addMouseListener(new MouseAdapter() {
 			@Override
@@ -208,7 +200,7 @@ public class mainWindow {
 				textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 22));
 			}
 		});
-		CE_Button.setMargin(new Insets(0,0,0,0));
+		CE_Button.setMargin(new Insets(0, 0, 0, 0));
 		CE_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -219,7 +211,7 @@ public class mainWindow {
 		gbc_CE_Button.gridx = 1;
 		gbc_CE_Button.gridy = 0;
 		panelButton.add(CE_Button, gbc_CE_Button);
-		
+
 		JButton C_Button = new JButton("C");
 		C_Button.addMouseListener(new MouseAdapter() {
 			@Override
@@ -234,16 +226,15 @@ public class mainWindow {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		
+
 		GridBagConstraints gbc_C_Button = new GridBagConstraints();
 		gbc_C_Button.fill = GridBagConstraints.BOTH;
 		gbc_C_Button.insets = new Insets(0, 0, 5, 5);
 		gbc_C_Button.gridx = 2;
 		gbc_C_Button.gridy = 0;
 		panelButton.add(C_Button, gbc_C_Button);
-		
-		
-		//number buttons
+
+		// number buttons
 		JButton button0 = new JButton("0");
 		button0.addMouseListener(new MouseAdapter() {
 			@Override
@@ -261,16 +252,14 @@ public class mainWindow {
 		gbc_button0.gridx = 0;
 		gbc_button0.gridy = 4;
 		panelButton.add(button0, gbc_button0);
-		
-		
+
 		button1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				buttonNumberClick("1");
 			}
 		});
-		
-		
+
 		button1.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_button1 = new GridBagConstraints();
 		gbc_button1.fill = GridBagConstraints.BOTH;
@@ -278,11 +267,7 @@ public class mainWindow {
 		gbc_button1.gridx = 0;
 		gbc_button1.gridy = 3;
 		panelButton.add(button1, gbc_button1);
-		
-	
-		
-		
-		
+
 		button2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -296,7 +281,7 @@ public class mainWindow {
 		gbc_button2.gridx = 1;
 		gbc_button2.gridy = 3;
 		panelButton.add(button2, gbc_button2);
-		
+
 		JButton button3 = new JButton("3");
 		button3.addMouseListener(new MouseAdapter() {
 			@Override
@@ -311,7 +296,7 @@ public class mainWindow {
 		gbc_button3.gridx = 2;
 		gbc_button3.gridy = 3;
 		panelButton.add(button3, gbc_button3);
-		
+
 		JButton button4 = new JButton("4");
 		button4.addMouseListener(new MouseAdapter() {
 			@Override
@@ -326,7 +311,7 @@ public class mainWindow {
 		gbc_button4.gridx = 0;
 		gbc_button4.gridy = 2;
 		panelButton.add(button4, gbc_button4);
-		
+
 		JButton button5 = new JButton("5");
 		button5.addMouseListener(new MouseAdapter() {
 			@Override
@@ -341,7 +326,7 @@ public class mainWindow {
 		gbc_button5.gridx = 1;
 		gbc_button5.gridy = 2;
 		panelButton.add(button5, gbc_button5);
-		
+
 		JButton button6 = new JButton("6");
 		button6.addMouseListener(new MouseAdapter() {
 			@Override
@@ -356,8 +341,7 @@ public class mainWindow {
 		gbc_button6.gridx = 2;
 		gbc_button6.gridy = 2;
 		panelButton.add(button6, gbc_button6);
-		
-		
+
 		JButton button7 = new JButton("7");
 		button7.addMouseListener(new MouseAdapter() {
 			@Override
@@ -372,7 +356,7 @@ public class mainWindow {
 		gbc_button7.gridx = 0;
 		gbc_button7.gridy = 1;
 		panelButton.add(button7, gbc_button7);
-		
+
 		JButton button8 = new JButton("8");
 		button8.addMouseListener(new MouseAdapter() {
 			@Override
@@ -387,7 +371,7 @@ public class mainWindow {
 		gbc_button8.gridx = 1;
 		gbc_button8.gridy = 1;
 		panelButton.add(button8, gbc_button8);
-		
+
 		JButton button9 = new JButton("9");
 		button9.addMouseListener(new MouseAdapter() {
 			@Override
@@ -406,9 +390,8 @@ public class mainWindow {
 		gbc_button9.gridx = 2;
 		gbc_button9.gridy = 1;
 		panelButton.add(button9, gbc_button9);
-		
-		
-		//main operation buttons
+
+		// main operation buttons
 		JButton buttonPlus = new JButton("+");
 		buttonPlus.addMouseListener(new MouseAdapter() {
 			@Override
@@ -423,7 +406,7 @@ public class mainWindow {
 		gbc_buttonPlus.gridx = 3;
 		gbc_buttonPlus.gridy = 4;
 		panelButton.add(buttonPlus, gbc_buttonPlus);
-		
+
 		JButton buttonMinus = new JButton("-");
 		buttonMinus.addMouseListener(new MouseAdapter() {
 			@Override
@@ -438,7 +421,7 @@ public class mainWindow {
 		gbc_buttonMinus.gridx = 3;
 		gbc_buttonMinus.gridy = 3;
 		panelButton.add(buttonMinus, gbc_buttonMinus);
-		
+
 		JButton buttonMultiplication = new JButton("*");
 		buttonMultiplication.addMouseListener(new MouseAdapter() {
 			@Override
@@ -453,7 +436,7 @@ public class mainWindow {
 		gbc_buttonMultiplication.gridx = 3;
 		gbc_buttonMultiplication.gridy = 2;
 		panelButton.add(buttonMultiplication, gbc_buttonMultiplication);
-		
+
 		JButton buttonDivinity = new JButton("/");
 		buttonDivinity.addMouseListener(new MouseAdapter() {
 			@Override
@@ -468,8 +451,8 @@ public class mainWindow {
 		gbc_buttonDivinity.gridx = 3;
 		gbc_buttonDivinity.gridy = 1;
 		panelButton.add(buttonDivinity, gbc_buttonDivinity);
-		
-		//another operation buttons
+
+		// another operation buttons
 		JButton buttonPercent = new JButton("\u0025");
 		buttonPercent.setMargin(new Insets(0, 0, 0, 0));
 		buttonPercent.addActionListener(new ActionListener() {
@@ -482,7 +465,7 @@ public class mainWindow {
 		gbc_buttonPercent.gridx = 4;
 		gbc_buttonPercent.gridy = 1;
 		panelButton.add(buttonPercent, gbc_buttonPercent);
-		
+
 		JButton plusMinusButton = new JButton("\u00B1");
 		plusMinusButton.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_plusMinusButton = new GridBagConstraints();
@@ -491,7 +474,7 @@ public class mainWindow {
 		gbc_plusMinusButton.gridx = 3;
 		gbc_plusMinusButton.gridy = 0;
 		panelButton.add(plusMinusButton, gbc_plusMinusButton);
-		
+
 		JButton sqrtButton = new JButton("\u221A");
 		sqrtButton.setMargin(new Insets(0, 0, 0, 0));
 		GridBagConstraints gbc_sqrtButton = new GridBagConstraints();
@@ -500,12 +483,12 @@ public class mainWindow {
 		gbc_sqrtButton.gridx = 4;
 		gbc_sqrtButton.gridy = 0;
 		panelButton.add(sqrtButton, gbc_sqrtButton);
-		
+
 		JButton button1DivinityX = new JButton("1/x");
 		button1DivinityX.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//textPaneMainResult.setText(setOutResultStr(textPaneMainResult.getText()));
+				// textPaneMainResult.setText(setOutResultStr(textPaneMainResult.getText()));
 			}
 		});
 		button1DivinityX.setMargin(new Insets(0, 0, 0, 0));
@@ -515,14 +498,14 @@ public class mainWindow {
 		gbc_button1DivinityX.gridx = 4;
 		gbc_button1DivinityX.gridy = 2;
 		panelButton.add(button1DivinityX, gbc_button1DivinityX);
-		
+
 		JButton buttonComa = new JButton(",");
 		buttonComa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String strComa = textPaneMainResult.getText();
-				if (!strComa.contains(",")){
-				textPaneMainResult.setText(textPaneMainResult.getText() + ",");
+				if (!strComa.contains(",")) {
+					textPaneMainResult.setText(textPaneMainResult.getText() + ",");
 				}
 			}
 		});
@@ -533,8 +516,8 @@ public class mainWindow {
 		gbc_buttonComa.gridx = 2;
 		gbc_buttonComa.gridy = 4;
 		panelButton.add(buttonComa, gbc_buttonComa);
-		
-		//buttonEquall
+
+		// buttonEquall
 		JButton buttonEquall = new JButton("=");
 		buttonEquall.addMouseListener(new MouseAdapter() {
 			@Override
@@ -544,12 +527,12 @@ public class mainWindow {
 				char operationChar = operationStr.charAt(0);
 				textPaneResult.setText("");
 				switch (operationChar) {
-				case '+':{
+				case '+': {
 					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
 					bool = true;
 					break;
 				}
-				case '-':{
+				case '-': {
 					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 - var2)));
 					bool = true;
 					break;
@@ -572,7 +555,7 @@ public class mainWindow {
 				default:
 					break;
 				}
-				
+
 			}
 		});
 		buttonEquall.setMargin(new Insets(0, 0, 0, 0));
@@ -582,37 +565,34 @@ public class mainWindow {
 		gbc_buttonEquall.gridx = 4;
 		gbc_buttonEquall.gridy = 3;
 		panelButton.add(buttonEquall, gbc_buttonEquall);
-		
-		//keyboard Action
-		 Action actionListener = new AbstractAction() {
-		      public void actionPerformed(ActionEvent actionEvent) {
-		        JButton source = (JButton) actionEvent.getSource();
-		       // jTextPane.setText(source.getText());
-		        buttonNumberClick(source.getText());
-		       // System.out.println("Activated: " + source.getText());
-		      }
-		    };
-		    
-		   KeyStroke button1KeyStroke = KeyStroke.getKeyStroke('1');
-		    InputMap inputMap = button1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-		    inputMap.put(button1KeyStroke, ACTION_KEY);
-		    inputMap = button1.getInputMap();
-		    ActionMap actionMap = button1.getActionMap();
-		    button1.setActionMap(actionMap);
-		    actionMap.put(ACTION_KEY, actionListener);
-		    
-		    KeyStroke button2KeyStroke = KeyStroke.getKeyStroke('2');
-		    inputMap = button2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-		    inputMap.put(button2KeyStroke, ACTION_KEY);
-		    inputMap = button2.getInputMap();
-		    actionMap = button2.getActionMap();
-		   button2.setActionMap(actionMap);
-		   actionMap.put(ACTION_KEY, actionListener);
-		
+
+		// keyboard actionListenerButtonNumber
+		Action actionListenerButtonNumber = new AbstractAction() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				JButton source = (JButton) actionEvent.getSource();
+				buttonNumberClick(source.getText());
+				// System.out.println("Activated: " + source.getText());
+			}
+		};
+
+		KeyStroke button1KeyStroke = KeyStroke.getKeyStroke('1');
+		InputMap inputMap = button1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(button1KeyStroke, ACTION_KEY);
+		inputMap = button1.getInputMap();
+		ActionMap actionMap = button1.getActionMap();
+		button1.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+
+		KeyStroke button2KeyStroke = KeyStroke.getKeyStroke('2');
+		inputMap = button2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(button2KeyStroke, ACTION_KEY);
+		inputMap = button2.getInputMap();
+		actionMap = button2.getActionMap();
+		button2.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
 	}
-	
-	void buttonNumberClick(String s){
-		
+
+	void buttonNumberClick(String s) {
 		if (bool) {
 			textPaneMainResult.setText("");
 			bool = false;
@@ -622,57 +602,33 @@ public class mainWindow {
 		}
 		textPaneMainResult.setText(textPaneMainResult.getText() + s);
 	}
-	
-	void setOPerationTextPaneResult(String s){
+
+	void setOPerationTextPaneResult(String s) {
 		operationStr = s;
 		inputNumber = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
-		textPaneResult.setText(setOutResultStr(getOutResultStr(textPaneMainResult.getText()))  + " " + operationStr);
+		textPaneResult.setText(setOutResultStr(getOutResultStr(textPaneMainResult.getText())) + " " + operationStr);
 		bool = true;
-		
+
 	}
-	
-	
+
 	String getOutResultStr(String strOut) {
 		strOut = strOut.replace(',', '.');
 		return strOut;
 	}
-	
-	 String setOutResultStr(String strOut){
-		//strOut = "777.7776756765677";
-		
+
+	String setOutResultStr(String strOut) {
 		double doubleOut = Double.parseDouble(strOut);
 		double intTest = doubleOut % 1;
-		
 		if (intTest == 0) {
 			int res = (int) doubleOut;
 			strOut = String.valueOf(res);
-		} else { 
+		} else {
 			strOut = strOut.replace('.', ',');
 		}
 		int maxLengthStrOut = 15;
 		if (strOut.length() > maxLengthStrOut) {
 			strOut = strOut.substring(0, maxLengthStrOut);
 		}
-		
 		return strOut;
-	 }
-		//textPaneMainResult.setText(strOut);
-		
-				
-		//String strTest2 = String.valueOf(doubleTest1);
-		//strTest2 = String.valueOf(doubleTest2).replace(',', '.');
-				
-		//String strTest2 = String.format("%.1f", doubleTest1);
-				
-				
-		//String strTest = String.format("%.1f", doubleTest1 + Double.parseDouble(strTest2)); 
-				
-				
-		//textPaneMainResult.setText(strTest);
-		
-		 
-	
+	}
 }
-
-// other trash code for future
-// C_Button.setMargin(new Insets(0,0,0,0));
