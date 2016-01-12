@@ -58,6 +58,7 @@ public class mainWindow {
 	String tempInputNumberStr;
 	String operationStr = "0";
 	boolean bool = false;
+	final String DIVISION_BY_ZERO = "Деление на 0 невозможно";
 
 	JTextPane textPaneResult = new JTextPane();
 	JTextPane textPaneMainResult = new JTextPane();
@@ -180,6 +181,12 @@ public class mainWindow {
 
 		// top buttons
 		JButton backSpaceButton = new JButton("\u2190");
+		backSpaceButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				backSpaceButtonMethod();
+			}
+		});
 		backSpaceButton.setMargin(new Insets(0, 0, 0, 0));
 		backSpaceButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -766,6 +773,10 @@ public class mainWindow {
 	}
 
 	void buttonEquallMethod() {
+		
+		if (!textPaneMainResult.getText().equals(DIVISION_BY_ZERO)) {
+			
+		
 
 		if (!textPaneResult.getText().equals("")) {
 			var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
@@ -800,12 +811,13 @@ public class mainWindow {
 				break;
 			} else {
 				textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 15));
-				textPaneMainResult.setText("Деление на 0 невозможно");
+				textPaneMainResult.setText(DIVISION_BY_ZERO);
 				bool = true;
 				break;
 			}
 		default:
 			break;
+		}
 		}
 	}
 
@@ -828,5 +840,9 @@ public class mainWindow {
 			strOut = strOut.substring(0, maxLengthStrOut);
 		}
 		return strOut;
+	}
+	
+	void backSpaceButtonMethod(){
+		StringBuffer bufferStr = new StringBuffer(textPaneMainResult.getText());
 	}
 }
