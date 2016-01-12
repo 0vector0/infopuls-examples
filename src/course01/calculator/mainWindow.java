@@ -53,8 +53,11 @@ public class mainWindow {
 	String ACTION_KEY = "The Action";
 	private JFrame frame;
 	double inputNumber = 0;
+	double var1 = 0;
+	double var2 = 0;
+	double tempVar = 0;
 	String tempInputNumberStr;
-	String operationStr;
+	String operationStr = "0";
 	boolean bool = false;
 
 	JTextPane textPaneResult = new JTextPane();
@@ -194,9 +197,7 @@ public class mainWindow {
 		CE_Button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				textPaneMainResult.setText("0");
-				textPaneResult.setText("");
-				textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 22));
+				C_ButtonMethod();
 			}
 		});
 		CE_Button.setMargin(new Insets(0, 0, 0, 0));
@@ -211,13 +212,14 @@ public class mainWindow {
 		gbc_CE_Button.gridy = 0;
 		panelButton.add(CE_Button, gbc_CE_Button);
 
+		
+	 	
 		JButton C_Button = new JButton("C");
 		C_Button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				textPaneMainResult.setText("0");
-				textPaneResult.setText("");
-				textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 22));
+				C_ButtonMethod();
+				
 			}
 		});
 		C_Button.setMargin(new Insets(0, 0, 0, 0));
@@ -569,6 +571,10 @@ public class mainWindow {
 					buttonComaMethod();
 					break;
 				}
+				case 'C':{
+					C_ButtonMethod();
+					break;
+				}
 				default:
 					break;
 				}
@@ -711,8 +717,23 @@ public class mainWindow {
 		actionMap = buttonComa.getActionMap();
 		buttonComa.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
+		
+		KeyStroke buttonEscKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, true);
+		inputMap = C_Button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		inputMap.put(buttonEscKeyStroke, ACTION_KEY);
+		inputMap = C_Button.getInputMap();
+		actionMap = C_Button.getActionMap();
+		C_Button.setActionMap(actionMap);
+		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
 
 	}
+	
+	void C_ButtonMethod(){
+ 		textPaneMainResult.setText("0");
+		textPaneResult.setText("");
+		textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		inputNumber = 0;
+ 	}
 
 	void buttonNumberClick(String s) {
 		if (bool) {
@@ -723,6 +744,7 @@ public class mainWindow {
 			textPaneMainResult.setText("");
 		}
 		textPaneMainResult.setText(textPaneMainResult.getText() + s);
+		tempVar = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
 	}
 
 	void button0NumberClick() {
@@ -748,8 +770,13 @@ public class mainWindow {
 
 	void buttonEquallMethod() {
 		double var1 = inputNumber;
+	//	double var2 = tempVar;
 		double var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
-		char operationChar = operationStr.charAt(0);
+		
+		
+		char operationChar = 0;
+		operationChar = operationStr.charAt(0);
+		
 		textPaneResult.setText("");
 		switch (operationChar) {
 		case '+': {
@@ -779,7 +806,9 @@ public class mainWindow {
 			}
 		default:
 			break;
+			
 		}
+		inputNumber = tempVar;
 	}
 
 	String getOutResultStr(String strOut) {
