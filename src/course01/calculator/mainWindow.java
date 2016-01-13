@@ -774,7 +774,7 @@ String ACTION_KEY = "The Action";
 
 	void buttonEquallMethod() {
 
-		if (!textPaneMainResult.getText().equals(DIVISION_BY_ZERO)) {
+		if (!textPaneMainResult.getText().equals('0')) {
 
 			if (!textPaneResult.getText().equals("")) {
 				var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
