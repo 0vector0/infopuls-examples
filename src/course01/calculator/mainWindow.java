@@ -38,7 +38,7 @@ import javax.swing.border.LineBorder;
 
 public class mainWindow {
 
-String ACTION_KEY = "The Action";
+	String ACTION_KEY = "The Action";
 	private JFrame frame;
 	double inputNumber = 0;
 	double var1 = 0;
@@ -721,7 +721,7 @@ String ACTION_KEY = "The Action";
 		actionMap = C_Button.getActionMap();
 		C_Button.setActionMap(actionMap);
 		actionMap.put(ACTION_KEY, actionListenerButtonNumber);
-		
+
 		KeyStroke backSpaceButtonKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, 0, true);
 		inputMap = backSpaceButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		inputMap.put(backSpaceButtonKeyStroke, ACTION_KEY);
@@ -774,47 +774,50 @@ String ACTION_KEY = "The Action";
 
 	void buttonEquallMethod() {
 
-		if (!textPaneMainResult.getText().equals('0')) {
+		if (!textPaneMainResult.getText().equals(DIVISION_BY_ZERO)) {
 
-			if (!textPaneResult.getText().equals("")) {
-				var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
-				tempVar = var2;
-			} else {
-				var2 = tempVar;
-				var1 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
-			}
+			if (!textPaneMainResult.getText().equals('0')) {
 
-			char operationChar = operationStr.charAt(0);
-
-			textPaneResult.setText("");
-			switch (operationChar) {
-			case '+': {
-				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
-				bool = true;
-				break;
-			}
-			case '-': {
-				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 - var2)));
-				bool = true;
-				break;
-			}
-			case '*':
-				textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 * var2)));
-				bool = true;
-				break;
-			case '/':
-				if (!textPaneMainResult.getText().equals("0")) {
-					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 / var2)));
-					bool = true;
-					break;
+				if (!textPaneResult.getText().equals("")) {
+					var2 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
+					tempVar = var2;
 				} else {
-					textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 15));
-					textPaneMainResult.setText(DIVISION_BY_ZERO);
+					var2 = tempVar;
+					var1 = Double.parseDouble(getOutResultStr(textPaneMainResult.getText()));
+				}
+
+				char operationChar = operationStr.charAt(0);
+
+				textPaneResult.setText("");
+				switch (operationChar) {
+				case '+': {
+					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 + var2)));
 					bool = true;
 					break;
 				}
-			default:
-				break;
+				case '-': {
+					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 - var2)));
+					bool = true;
+					break;
+				}
+				case '*':
+					textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 * var2)));
+					bool = true;
+					break;
+				case '/':
+					if (!textPaneMainResult.getText().equals("0")) {
+						textPaneMainResult.setText(setOutResultStr(String.valueOf(var1 / var2)));
+						bool = true;
+						break;
+					} else {
+						textPaneMainResult.setFont(new Font("Tahoma", Font.PLAIN, 15));
+						textPaneMainResult.setText(DIVISION_BY_ZERO);
+						bool = true;
+						break;
+					}
+				default:
+					break;
+				}
 			}
 		}
 	}
