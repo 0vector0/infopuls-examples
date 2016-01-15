@@ -1,7 +1,11 @@
 package course01.prj17homework;
 
+import java.awt.List;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Prj17HomeworkPart01 {
@@ -33,6 +37,9 @@ public class Prj17HomeworkPart01 {
 
 		// task3
 		task3(massStr);
+
+		// task4
+		task4(massStr);
 	}
 
 	static void printArray(String[] mass) {
@@ -44,7 +51,7 @@ public class Prj17HomeworkPart01 {
 	}
 
 	static void task1(String[] mass) {
-		
+
 		int minLength = mass[0].length();
 		String minStr = mass[0];
 		for (int i = 1; i < mass.length; i++) {
@@ -60,7 +67,7 @@ public class Prj17HomeworkPart01 {
 	}
 
 	static void task2(String[] mass) {
-		
+
 		System.out.println();
 		System.out.println("Task2 - Упорядочить и вывести строки в порядке возрастания их длин,");
 		String temp;
@@ -78,7 +85,7 @@ public class Prj17HomeworkPart01 {
 	}
 
 	static void task3(String[] mass) {
-		
+
 		double average = 0;
 		int sum = 0;
 		for (int i = 0; i < mass.length; i++) {
@@ -94,6 +101,49 @@ public class Prj17HomeworkPart01 {
 				System.out.print("Длина строки - " + mass[i].length() + " - ");
 				System.out.println(mass[i]);
 			}
+		}
+		System.out.println();
+	}
+
+	static void task4(String[] mass) {
+		int k = 0;
+		String sym;
+		System.out.println(
+				"Task4 - В каждом слове текста k-ю букву заменить заданным символом. Если k больше длины слова, корректировку не выполнять");
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Введите число k");
+		System.out.println();
+		while (!sc.hasNextInt()) {
+			System.out.println("введите число");
+			System.out.println(sc.nextLine());
+		}
+		k = sc.nextInt();
+		System.out.println();
+		System.out.println("введите символ");
+		sc.nextLine();
+		sym = sc.nextLine();
+		sym = sym.substring(0, 1);
+
+		System.out.println("k = " + k);
+		System.out.println("sym = " + sym);
+		String[] massTask4 = (String[]) mass.clone();
+
+		ArrayList<String> listAll = new ArrayList<String>();
+		StringBuffer strBuffer = new StringBuffer();
+
+		for (int i = 0; i < massTask4.length; i++) {
+			ArrayList<String> listTemp = new ArrayList<String>(Arrays.asList(massTask4[i].split(" ")));
+
+			for (int j = 0; j < listTemp.size(); j++) {
+				strBuffer = new StringBuffer(listTemp.get(j));
+
+				if (strBuffer.length() >= 5) {
+					strBuffer = strBuffer.replace(k - 1, k, sym);
+				}
+				System.out.print(strBuffer + " ");
+			}
+			System.out.println();
 		}
 		System.out.println();
 	}
