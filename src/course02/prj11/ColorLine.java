@@ -1,10 +1,10 @@
 package course02.prj11;
 
-public class ColorPoint extends Point implements ColorAble {
-	int color;
+public class ColorLine extends Line implements ColorAble {
 
-	public ColorPoint(int x, int y, int color) {
-		super(x, y);
+	int color;
+	public ColorLine(Point start, Point end, int color) {
+		super(start,  end);
 		this.color = color;
 		// TODO Auto-generated constructor stub
 	}
@@ -14,5 +14,6 @@ public class ColorPoint extends Point implements ColorAble {
 		// TODO Auto-generated method stub
 		return color;
 	}
+	
 
 }

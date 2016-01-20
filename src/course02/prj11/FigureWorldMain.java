@@ -45,6 +45,18 @@ public class FigureWorldMain {
 			}
 		}
 
+		ColorAble [] masColor = new ColorAble[3];
+		masColor[0] = new ColorPoint(1, 2, 777);
+		masColor[1] = new ColorLine(a, c, 8888);
+		masColor[2] = new ColorHouse(65);
+		
+		System.out.println("------------------");
+		for (int i = 0; i < masColor.length; i++) {
+			System.out.println(masColor[i] + "" + masColor[i].getClass());
+			
+		}
+		
+		
 	}
 
 }
