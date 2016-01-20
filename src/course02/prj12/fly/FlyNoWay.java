@@ -1,4 +1,4 @@
-package course02.prj12;
+package course02.prj12.fly;
 
 public class FlyNoWay implements FlyBehavior {
 

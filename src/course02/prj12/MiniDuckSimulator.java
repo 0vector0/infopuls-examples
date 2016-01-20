@@ -1,4 +1,11 @@
 package course02.prj12;
+import course02.prj12.ducks.DecoyDuck;
+import course02.prj12.ducks.Duck;
+import course02.prj12.ducks.MallardDuck;
+import course02.prj12.ducks.ModelDuck;
+import course02.prj12.ducks.RedHeadDuck;
+import course02.prj12.ducks.RubberDuck;
+import course02.prj12.fly.FlyRocketPowered;
 
 public class MiniDuckSimulator {
 

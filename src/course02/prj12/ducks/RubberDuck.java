@@ -1,4 +1,7 @@
-package course02.prj12;
+package course02.prj12.ducks;
+
+import course02.prj12.fly.FlyNoWay;
+import course02.prj12.quack.MuteQuack;
 
 public class RubberDuck extends Duck {
 

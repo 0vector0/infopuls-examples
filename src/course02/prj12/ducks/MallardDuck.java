@@ -1,4 +1,7 @@
-package course02.prj12;
+package course02.prj12.ducks;
+
+import course02.prj12.fly.FlyWithWings;
+import course02.prj12.quack.Quack;
 
 public class MallardDuck extends Duck {
 
