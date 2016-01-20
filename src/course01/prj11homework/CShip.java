@@ -1,4 +1,4 @@
-package prj11homework;
+package course01.prj11homework;
 
 public class CShip extends CVehicle implements SwimAble {
 
@@ -40,8 +40,6 @@ public class CShip extends CVehicle implements SwimAble {
 	@Override
 	public void swim() {
 		System.out.println(getClass().getName() +  "Плывет со скоростбю -" + getMaxSpeed());
-		// TODO Auto-generated method stub
-		
 	}
 
 }

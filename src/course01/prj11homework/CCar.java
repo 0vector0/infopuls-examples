@@ -1,4 +1,4 @@
-package prj11homework;
+package course01.prj11homework;
 
 public class CCar extends CVehicle implements MoveAble {
 
@@ -21,8 +21,6 @@ public class CCar extends CVehicle implements MoveAble {
 	@Override
 	public void move() {
 		System.out.println(getClass().getName() + " едет");
-		
-		// TODO Auto-generated method stub
 		
 	}
 	

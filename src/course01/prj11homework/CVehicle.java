@@ -1,4 +1,4 @@
-package prj11homework;
+package course01.prj11homework;
 
 import java.util.Scanner;
 

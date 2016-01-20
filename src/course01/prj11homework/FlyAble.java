@@ -1,9 +1,7 @@
-package prj11homework;
+package course01.prj11homework;
 
 public interface FlyAble {
-	
-	
-	public void Fly();
-	
-}
 
+	public void Fly();
+
+}

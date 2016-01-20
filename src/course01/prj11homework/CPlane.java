@@ -1,4 +1,4 @@
-package prj11homework;
+package course01.prj11homework;
 
 public class CPlane extends CVehicle {
 	
@@ -24,7 +24,6 @@ public class CPlane extends CVehicle {
 	
 	@Override
 	protected void print() {
-		// TODO Auto-generated method stub
 		System.out.println("Самолет");
 		super.print();
 		System.out.println();
