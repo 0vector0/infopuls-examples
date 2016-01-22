@@ -49,10 +49,11 @@ public class FlyPoint {
 
 	public static void main(String[] args) throws InterruptedException {
 		MyFrame mf = new MyFrame();
-		for (int i = 0; i < 10; i++) {
-			mf.mp.x = i * 20;
-			mf.mp.y = i * 20;
-			Thread.sleep(500);
+		for (int i = 0; i < 100; i++) {
+			mf.mp.x = i;
+			mf.mp.y = i;
+
+			Thread.sleep(100);
 			mf.repaint();
 		}
 	}
