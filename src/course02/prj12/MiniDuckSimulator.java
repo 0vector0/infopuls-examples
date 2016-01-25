@@ -6,6 +6,8 @@ import course02.prj12.ducks.ModelDuck;
 import course02.prj12.ducks.RedHeadDuck;
 import course02.prj12.ducks.RubberDuck;
 import course02.prj12.fly.FlyRocketPowered;
+import course02.prj12.turkey.DuckAdapter;
+import course02.prj12.turkey.WildTurkey;
 
 public class MiniDuckSimulator {
 
@@ -36,6 +38,14 @@ public class MiniDuckSimulator {
 		model.setFlyBehavior(new FlyRocketPowered());
 		model.perfomeFly();
 		
+		System.out.println("-------------------");
+		WildTurkey turkey = new WildTurkey();
+		DuckAdapter turkeyAdapter = new TurkeyAdapter(turkey);
+
+		turkeyAdapter.perfomeQuack();
+		turkeyAdapter.perfomeFly();
+
 	}
+
 
 }

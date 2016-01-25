@@ -2,11 +2,12 @@ package course02.prj12.ducks;
 
 import course02.prj12.fly.FlyBehavior;
 import course02.prj12.quack.QuackBehavior;
+import course02.prj12.turkey.DuckAdapter;
 
-public abstract class Duck {
+public abstract class Duck implements DuckAdapter {
 	
-	FlyBehavior flyBehavior;
-	QuackBehavior quackBehavior;
+	protected FlyBehavior flyBehavior;
+	protected QuackBehavior quackBehavior;
 	
 	public Duck(){
 	}
