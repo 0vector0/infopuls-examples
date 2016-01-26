@@ -19,6 +19,13 @@ public class DuckHunt {
 					mainWindowFrame.getContentPane().setLayout(new BorderLayout(0, 0));
 					// DuckHunt window = new DuckHunt();
 					mainWindowFrame.setVisible(true);
+					for (int i = 0; i < 100; i++) {
+						mainWindowFrame.duckPanel.x = i;
+						// mainWindowFrame.duckPanel.y = i;
+
+						Thread.sleep(100);
+						mainWindowFrame.repaint();
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
