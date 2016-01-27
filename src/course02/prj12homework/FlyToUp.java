@@ -19,11 +19,7 @@ public class FlyToUp implements FlyBehaviorHome {
 		Rectangle rec = new Rectangle(imagePanel.getBounds());
 		if (rec.y > 0) {
 			rec.y = rec.y - 5;
-			
 			imagePanel.setBounds(rec);
-
-			System.out.println("Fly to up!!!!");
 		}
 	}
-
 }

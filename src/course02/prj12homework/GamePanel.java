@@ -20,6 +20,7 @@ public class GamePanel extends JPanel {
 	private String filePath = "img\\background.png";
 
 	public GamePanel() {
+
 		imageBackGround = Toolkit.getDefaultToolkit().createImage(filePath);
 		imageIconBackGround = new ImageIcon(imageBackGround);
 		setLayout(new BorderLayout(0, 0));
@@ -28,7 +29,5 @@ public class GamePanel extends JPanel {
 		imgBackGroundLabel.setIcon(imageIconBackGround);
 		setBounds(0, 0, imageIconBackGround.getIconWidth(), imageIconBackGround.getIconHeight());
 		add(imgBackGroundLabel);
-
 	}
-
 }

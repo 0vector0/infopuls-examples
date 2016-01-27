@@ -16,7 +16,6 @@ public class FlyToDown implements FlyBehaviorHome {
 
 		ImagePanel = imagePanel;
 		Rectangle rec = new Rectangle(imagePanel.getBounds());
-		//int x = rec.x;
 		if (rec.y <= 490 - imagePanel.getHeight()) {
 			rec.y = rec.y + 5;
 		}
@@ -24,10 +23,6 @@ public class FlyToDown implements FlyBehaviorHome {
 		if (rec.y == 490 - imagePanel.getHeight() ) {
 			imagePanel.setImage("dog.png");
 			imagePanel.setBounds(rec.x, 300, 300, 300);
-			//rec = new Rectangle(imagePanel.getBounds());
 		}
-
-		System.out.println("Fly to down!!!!");
 	}
-
 }

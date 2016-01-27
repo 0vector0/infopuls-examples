@@ -42,7 +42,6 @@ public class DuckPanel extends ImagePanel {
 				}
 			}
 		}
-
 	}
 
 	public void flyRandomDuck(DuckPanel duckPanel) {
@@ -56,8 +55,8 @@ public class DuckPanel extends ImagePanel {
 			count = 0;
 			switch (random) {
 			// case 1:
-				// flyBehaviorHome = new FlyToRight(this);
-				// perfomeFly(this);
+			// flyBehaviorHome = new FlyToRight(this);
+			// perfomeFly(this);
 			// break;
 			case 1:
 				flyBehaviorHome = new FlyToUpRight(this);
@@ -86,9 +85,7 @@ public class DuckPanel extends ImagePanel {
 	}
 
 	public void flyDeathDuck(DuckPanel duckPanel) {
-
 		flyBehaviorHome = new FlyToDown(duckPanel);
 		perfomeFly(this);
 	}
-
 }

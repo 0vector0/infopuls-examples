@@ -4,10 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -40,22 +37,17 @@ public abstract class ImagePanel extends JPanel {
 	}
 
 	public ImagePanel() {
-		setOpaque(false);
 
-		
-		
+		setOpaque(false);
 		iconImage = new ImageIcon(bufferedImage);
 		image = Toolkit.getDefaultToolkit().createImage("img\\" + fileName);
 		imageIcon = new ImageIcon(image);
-		
 		imgLabel = new JLabel(iconImage);
 		imageIcon.setImageObserver(imgLabel);
 		imgLabel.setIcon(imageIcon);
 		setLayout(new BorderLayout(0, 0));
 		setBounds(0, 0, imageIcon.getIconWidth(), imageIcon.getIconHeight());
-		// setBounds(0, 0, 100, 100);
 		add(imgLabel);
-
 	}
 
 	public void perfomeFly(ImagePanel panel) {
@@ -73,7 +65,5 @@ public abstract class ImagePanel extends JPanel {
 		imageIcon.setImageObserver(imgLabel);
 		imgLabel.setIcon(imageIcon);
 		imgLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
-
 	}
-
 }

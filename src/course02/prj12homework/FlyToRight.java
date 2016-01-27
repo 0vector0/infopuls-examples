@@ -9,23 +9,19 @@ public class FlyToRight implements FlyBehaviorHome {
 	public FlyToRight(ImagePanel imagePanel) {
 		super();
 		ImagePanel = imagePanel;
-		// imagePanel.setFileName("right1.png");
 	}
 
 	@Override
 	public void fly(ImagePanel imagePanel) {
 
 		ImagePanel = imagePanel;
-
 		Rectangle rec = new Rectangle(imagePanel.getBounds());
 
 		if (rec.x < 700 - imagePanel.getWidth()) {
 			rec.x = rec.x + 5;
 			changeImage(imagePanel);
 			imagePanel.setBounds(rec);
-			// System.out.println("Fly to right!!!!");
 		}
-
 	}
 
 	public void changeImage(ImagePanel imagePanel) {
@@ -53,7 +49,5 @@ public class FlyToRight implements FlyBehaviorHome {
 			imagePanel.setImage("right1.png");
 			return;
 		}
-
 	}
-
 }

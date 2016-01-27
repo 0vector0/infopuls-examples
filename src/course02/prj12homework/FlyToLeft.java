@@ -9,7 +9,6 @@ public class FlyToLeft implements FlyBehaviorHome {
 	public FlyToLeft(ImagePanel imagePanel) {
 		super();
 		ImagePanel = imagePanel;
-		// imagePanel.setFileName("left1.png");
 	}
 
 	@Override
@@ -22,9 +21,7 @@ public class FlyToLeft implements FlyBehaviorHome {
 			rec.x = rec.x - 5;
 			changeImage(imagePanel);
 			imagePanel.setBounds(rec);
-			// System.out.println("Fly to left!!!!");
 		}
-
 	}
 
 	public void changeImage(ImagePanel imagePanel) {
@@ -52,6 +49,5 @@ public class FlyToLeft implements FlyBehaviorHome {
 			imagePanel.setImage("left1.png");
 			return;
 		}
-
 	}
 }
