@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +28,7 @@ public class DuckHunt {
 	private JButton rightButton;
 	int result;
 	JLabel resultLabel;
+	private JLabel labelDog;
 
 	/**
 	 * Launch the application.
@@ -37,7 +39,7 @@ public class DuckHunt {
 				try {
 					DuckHunt window = new DuckHunt();
 					window.frame.setVisible(true);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,13 +61,19 @@ public class DuckHunt {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		timer = new Timer(50, new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				System.out.println("timer");
 			}
 		});
 		frame.getContentPane().setLayout(null);
+
+		labelDog = new JLabel("New label");
+		labelDog.setIcon(new ImageIcon("C:\\Users\\vector\\Desktop\\duck\\dog.png"));
+		labelDog.setBounds(150, 300, 300, 300);
+		frame.getContentPane().add(labelDog);
+		labelDog.setVisible(false);
 
 		JPanel buttonpanel = new JPanel();
 		buttonpanel.setBounds(500, 0, 100, 562);
@@ -80,7 +88,8 @@ public class DuckHunt {
 		startButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				labelDog.setVisible(false);
+				duckPanel.setVisible(true);
 				timer.stop();
 				timer = new Timer(5, new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
@@ -102,19 +111,22 @@ public class DuckHunt {
 
 		stopButton = new JButton("stop");
 		buttonpanel.add(stopButton);
+
 		duckPanel = new DuckPanel();
 		frame.getContentPane().add(duckPanel);
 
 		gamePanel = new GamePanel();
-		// gamePanel.setBounds(0, 0, 10, 10);
 		frame.getContentPane().add(gamePanel);
 
-		// duckPanel.setBounds(0, 0, 0, 0);
 		duckPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
 				result++;
 				resultLabel.setText("Результат " + Integer.toString(result));
+				labelDog.setVisible(true);
+				duckPanel.setVisible(false);
+				timer.stop();
 
 			}
 		});
