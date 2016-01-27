@@ -52,7 +52,7 @@ public class DuckPanel extends ImagePanel {
 			count++;
 		} else {
 			int random = (int) (Math.random() * 5) + 1;
-			System.out.println(random);
+			// System.out.println(random);
 			count = 0;
 			switch (random) {
 			// case 1:
