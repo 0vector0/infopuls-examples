@@ -20,8 +20,6 @@ public class DuckHunt {
 	DuckPanel duckPanel;
 	GamePanel gamePanel;
 
-	// int x;
-	// int y;
 	Timer timer;
 	private JButton stopButton;
 	int result;
@@ -89,11 +87,10 @@ public class DuckHunt {
 				labelDog.setVisible(false);
 				duckPanel.setVisible(true);
 				timer.stop();
-				timer = new Timer(10, new ActionListener() {
+				timer = new Timer(50, new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
+						
 						duckPanel.flyDuck(duckPanel);
-						// duckPanel.setFlyBehavior(new FlyToLeft(duckPanel));
-						// duckPanel.perfomeFly(duckPanel);
 					}
 				});
 				timer.start();
@@ -106,7 +103,8 @@ public class DuckHunt {
 
 		duckPanel = new DuckPanel();
 		frame.getContentPane().add(duckPanel);
-		duckPanel.setBounds(400, 400, 100, 100);
+		duckPanel.setBounds(100, 100, 100, 100);
+		//duckPanel.setBounds(400, 400, 100, 100);
 		duckPanel.setVisible(false);
 		gamePanel = new GamePanel();
 		frame.getContentPane().add(gamePanel);

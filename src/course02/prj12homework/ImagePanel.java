@@ -23,32 +23,23 @@ public abstract class ImagePanel extends JPanel {
 	Image image;
 	ImageIcon imageIcon;
 	int count = 0;
-	// int x;
-	// int y;
-	private String filePath = "img\\right1.png";
+	private String fileName;
 
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
 
 	public ImagePanel() {
 		setOpaque(false);
 
 		BufferedImage bufferedImage = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
 		ImageIcon iconImage;
-		int x;
-		String imageDuck = "img\\sunny_256.png";
-		File img = new File(imageDuck);
-		try {
-			bufferedImage = ImageIO.read(img);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		iconImage = new ImageIcon(bufferedImage);
-		// JLabel picLabel = new JLabel(iconImage);
-		// add(picLabel);
-
-		// this.x = x;
-		// this.y = y;
-		image = Toolkit.getDefaultToolkit().createImage(filePath);
+		image = Toolkit.getDefaultToolkit().createImage("img\\" + fileName);
 		imageIcon = new ImageIcon(image);
 		setLayout(new BorderLayout(0, 0));
 		imgLabel = new JLabel(iconImage);
@@ -61,12 +52,21 @@ public abstract class ImagePanel extends JPanel {
 	}
 
 	public void perfomeFly(ImagePanel panel) {
-
 		flyBehaviorHome.fly(panel);
 	}
 
 	public void setFlyBehavior(FlyBehaviorHome fb) {
 		flyBehaviorHome = fb;
+	}
+
+	public void setImage(String fileName) {
+		this.fileName = fileName;
+		image = Toolkit.getDefaultToolkit().createImage("img\\" + fileName);
+		imageIcon = new ImageIcon(image);
+		imageIcon.setImageObserver(imgLabel);
+		imgLabel.setIcon(imageIcon);
+		imgLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
+
 	}
 
 }
