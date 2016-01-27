@@ -79,17 +79,26 @@ public class DuckHunt {
 		resultLabel = new JLabel("Результат 0");
 		buttonpanel.add(resultLabel);
 
+		duckPanel = new DuckPanel();
+		frame.getContentPane().add(duckPanel);
+		duckPanel.setBounds(100, 100, 100, 100);
+		duckPanel.setVisible(false);
+		gamePanel = new GamePanel();
+		frame.getContentPane().add(gamePanel);
+
 		JButton startButton = new JButton("start");
 		buttonpanel.add(startButton);
 		startButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
+				timer.stop();
 				labelDog.setVisible(false);
 				duckPanel.setVisible(true);
-				timer.stop();
+				duckPanel.setFileName("right1.png");
+				duckPanel.setBounds(100, 100, 100, 100);
 				timer = new Timer(50, new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
-						
 						duckPanel.flyDuck(duckPanel);
 					}
 				});
@@ -101,13 +110,13 @@ public class DuckHunt {
 		stopButton = new JButton("stop");
 		buttonpanel.add(stopButton);
 
-		duckPanel = new DuckPanel();
-		frame.getContentPane().add(duckPanel);
-		duckPanel.setBounds(100, 100, 100, 100);
-		//duckPanel.setBounds(400, 400, 100, 100);
-		duckPanel.setVisible(false);
-		gamePanel = new GamePanel();
-		frame.getContentPane().add(gamePanel);
+		stopButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				timer.stop();
+				duckPanel.setFileName("0.png");
+			}
+		});
 
 		duckPanel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -121,12 +130,7 @@ public class DuckHunt {
 
 			}
 		});
-		stopButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				timer.stop();
-			}
-		});
+
 		frame.repaint();
 	}
 }

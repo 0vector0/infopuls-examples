@@ -24,9 +24,15 @@ public abstract class ImagePanel extends JPanel {
 	ImageIcon imageIcon;
 	int count = 0;
 	private String fileName;
+	ImageIcon iconImage;
+	BufferedImage bufferedImage = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+		iconImage = new ImageIcon(bufferedImage);
+		image = Toolkit.getDefaultToolkit().createImage("img\\" + fileName);
+		imageIcon = new ImageIcon(image);
+		imgLabel.setIcon(imageIcon);
 	}
 
 	public String getFileName() {
@@ -36,15 +42,16 @@ public abstract class ImagePanel extends JPanel {
 	public ImagePanel() {
 		setOpaque(false);
 
-		BufferedImage bufferedImage = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
-		ImageIcon iconImage;
+		
+		
 		iconImage = new ImageIcon(bufferedImage);
 		image = Toolkit.getDefaultToolkit().createImage("img\\" + fileName);
 		imageIcon = new ImageIcon(image);
-		setLayout(new BorderLayout(0, 0));
+		
 		imgLabel = new JLabel(iconImage);
 		imageIcon.setImageObserver(imgLabel);
 		imgLabel.setIcon(imageIcon);
+		setLayout(new BorderLayout(0, 0));
 		setBounds(0, 0, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 		// setBounds(0, 0, 100, 100);
 		add(imgLabel);
