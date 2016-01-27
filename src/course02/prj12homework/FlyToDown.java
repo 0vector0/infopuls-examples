@@ -14,18 +14,20 @@ public class FlyToDown implements FlyBehaviorHome {
 	@Override
 	public void fly(ImagePanel imagePanel) {
 
-		// int x = 0;
-		// int y = 0;
 		ImagePanel = imagePanel;
 		Rectangle rec = new Rectangle(imagePanel.getBounds());
-		// rec.x = rec.x + 1;
-		if (rec.y < 300 - imagePanel.getHeight() - 40)
+		//int x = rec.x;
+		if (rec.y <= 490 - imagePanel.getHeight()) {
 			rec.y = rec.y + 5;
-
+		}
 		imagePanel.setBounds(rec);
+		if (rec.y == 490 - imagePanel.getHeight() ) {
+			imagePanel.setImage("dog.png");
+			imagePanel.setBounds(rec.x, 300, 300, 300);
+			//rec = new Rectangle(imagePanel.getBounds());
+		}
 
 		System.out.println("Fly to down!!!!");
 	}
 
 }
-

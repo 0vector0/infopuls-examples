@@ -74,5 +74,11 @@ public class DuckPanel extends ImagePanel {
 			}
 		}
 	}
+	
+	public void flyDeathDuck(DuckPanel duckPanel) {
+
+				flyBehaviorHome = new FlyToDown(duckPanel);
+				perfomeFly(this);
+		}
 
 }

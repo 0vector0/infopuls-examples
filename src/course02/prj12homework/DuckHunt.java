@@ -35,6 +35,7 @@ public class DuckHunt {
 				try {
 					DuckHunt window = new DuckHunt();
 					window.frame.setVisible(true);
+					window.frame.setResizable(false);
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -97,7 +98,7 @@ public class DuckHunt {
 				duckPanel.setVisible(true);
 				duckPanel.setFileName("right1.png");
 				duckPanel.setBounds(100, 100, 100, 100);
-				timer = new Timer(50, new ActionListener() {
+				timer = new Timer(100, new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
 						duckPanel.flyDuck(duckPanel);
 					}
@@ -115,18 +116,28 @@ public class DuckHunt {
 			public void mouseClicked(MouseEvent e) {
 				timer.stop();
 				duckPanel.setFileName("0.png");
+				timer = new Timer(10, new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						duckPanel.flyDeathDuck(duckPanel);
+					}
+				});
+				timer.start();
 			}
 		});
 
 		duckPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
 				result++;
 				resultLabel.setText("Результат " + Integer.toString(result));
-				labelDog.setVisible(true);
-				duckPanel.setVisible(false);
 				timer.stop();
+				duckPanel.setFileName("0.png");
+				timer = new Timer(10, new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						duckPanel.flyDeathDuck(duckPanel);
+					}
+				});
+				timer.start();
 
 			}
 		});
