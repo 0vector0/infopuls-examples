@@ -1,5 +1,5 @@
 package course02.prj14;
 
 public interface Observer {
-	public void update(float temp, float humidity, float pressure);
+	public void update(float tempereature, float humidity, float pressure);
 }
