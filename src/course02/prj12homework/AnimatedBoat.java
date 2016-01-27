@@ -53,8 +53,8 @@ public class AnimatedBoat {
 
 		public AnimationPane() {
 			try {
-				boat = ImageIO.read(new File("D:\\java\\workspace\\infopuls-examples\\img\\right.png"));
-				Timer timer = new Timer(40, new ActionListener() {
+				boat = ImageIO.read(new File("D:\\java\\workspace\\infopuls-examples\\img\\sunny_256.png"));
+				Timer timer = new Timer(5, new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						xPos += direction;

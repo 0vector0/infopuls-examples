@@ -14,7 +14,6 @@ class MyPanel extends JPanel {
 
 	void fly(Graphics g) {
 		
-
 		if (x > 150 && y > 150) {
 			g.setColor(Color.BLACK);
 		} else {
