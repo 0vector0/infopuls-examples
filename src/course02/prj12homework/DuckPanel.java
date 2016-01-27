@@ -14,6 +14,7 @@ public class DuckPanel extends ImagePanel {
 		super();
 		flyBehaviorHome = new FlyToRight(this);
 		setFileName("right1.png");
+
 	}
 
 	public void flyDuck(DuckPanel duckPanel) {

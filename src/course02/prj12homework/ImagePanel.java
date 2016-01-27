@@ -1,6 +1,7 @@
 package course02.prj12homework;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
@@ -48,6 +49,7 @@ public abstract class ImagePanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 		setBounds(0, 0, imageIcon.getIconWidth(), imageIcon.getIconHeight());
 		add(imgLabel);
+		setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 	}
 
 	public void perfomeFly(ImagePanel panel) {

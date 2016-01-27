@@ -1,6 +1,7 @@
 package course02.prj12homework;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -29,5 +30,6 @@ public class GamePanel extends JPanel {
 		imgBackGroundLabel.setIcon(imageIconBackGround);
 		setBounds(0, 0, imageIconBackGround.getIconWidth(), imageIconBackGround.getIconHeight());
 		add(imgBackGroundLabel);
+		setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 	}
 }
