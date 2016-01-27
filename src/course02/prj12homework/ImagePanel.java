@@ -29,6 +29,7 @@ public abstract class ImagePanel extends JPanel {
 
 
 	public ImagePanel() {
+		setOpaque(false);
 
 		BufferedImage bufferedImage = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
 		ImageIcon iconImage;
