@@ -24,10 +24,6 @@ public class FlyToDownRight extends FlyToRight implements FlyBehaviorHome {
 			rec.y = rec.y + 5;
 			changeImage(imagePanel);
 			imagePanel.setBounds(rec);
-
-			System.out.println("Fly to up right!!!!");
 		}
-		//System.out.println("error");
 	}
-
 }

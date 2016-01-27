@@ -47,35 +47,35 @@ public class DuckPanel extends ImagePanel {
 
 	public void flyRandomDuck(DuckPanel duckPanel) {
 
-		if (count < 10) {
+		if (count < 20) {
 			perfomeFly(this);
 			count++;
 		} else {
-			int random = (int) (Math.random() * 6) + 1;
+			int random = (int) (Math.random() * 5) + 1;
 			System.out.println(random);
 			count = 0;
 			switch (random) {
-			case 1:
+			// case 1:
 				// flyBehaviorHome = new FlyToRight(this);
 				// perfomeFly(this);
-				break;
-			case 2:
+			// break;
+			case 1:
 				flyBehaviorHome = new FlyToUpRight(this);
 				perfomeFly(this);
 				break;
-			case 3:
+			case 2:
 				flyBehaviorHome = new FlyToDownRight(this);
 				perfomeFly(this);
 				break;
-			case 4:
+			case 3:
 				flyBehaviorHome = new FlyToLeft(this);
 				perfomeFly(this);
 				break;
-			case 5:
+			case 4:
 				flyBehaviorHome = new FlyToUpLeft(this);
 				perfomeFly(this);
 				break;
-			case 6:
+			case 5:
 				flyBehaviorHome = new FlyToDownLeft(this);
 				perfomeFly(this);
 				break;

@@ -29,21 +29,29 @@ public class FlyToLeft implements FlyBehaviorHome {
 
 	public void changeImage(ImagePanel imagePanel) {
 
+		if (!imagePanel.getFileName().equals("left1.png") && !imagePanel.getFileName().equals("left2.png")
+				&& !imagePanel.getFileName().equals("left3.png")) {
+			imagePanel.setImage("left1.png");
+			return;
+		}
 		if (imagePanel.getFileName().equals("right1.png") || imagePanel.getFileName().equals("right2.png")
 				|| imagePanel.getFileName().equals("right3.png")) {
 			imagePanel.setImage("left1.png");
-		} else {
-			if (imagePanel.getFileName().equals("left1.png")) {
-				imagePanel.setImage("left2.png");
-			} else {
-				if (imagePanel.getFileName().equals("left2.png")) {
-					imagePanel.setImage("left3.png");
-				} else {
-					if (imagePanel.getFileName().equals("left3.png")) {
-						imagePanel.setImage("left1.png");
-					}
-				}
-			}
+			return;
 		}
+
+		if (imagePanel.getFileName().equals("left1.png")) {
+			imagePanel.setImage("left2.png");
+			return;
+		}
+		if (imagePanel.getFileName().equals("left2.png")) {
+			imagePanel.setImage("left3.png");
+			return;
+		}
+		if (imagePanel.getFileName().equals("left3.png")) {
+			imagePanel.setImage("left1.png");
+			return;
+		}
+
 	}
 }
