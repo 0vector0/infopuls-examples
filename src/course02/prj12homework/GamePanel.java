@@ -17,7 +17,7 @@ public class GamePanel extends JPanel {
 	JLabel imgBackGroundLabel;
 	Image imageBackGround;
 	ImageIcon imageIconBackGround;
-	private String filePath = "D:\\java\\workspace\\infopuls-examples\\img\\background.png";
+	private String filePath = "img\\background.png";
 
 	public GamePanel() {
 		imageBackGround = Toolkit.getDefaultToolkit().createImage(filePath);

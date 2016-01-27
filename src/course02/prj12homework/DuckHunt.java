@@ -68,7 +68,7 @@ public class DuckHunt {
 		frame.getContentPane().setLayout(null);
 
 		labelDog = new JLabel("New label");
-		labelDog.setIcon(new ImageIcon("C:\\Users\\vector\\Desktop\\duck\\dog.png"));
+		labelDog.setIcon(new ImageIcon("img\\dog.png"));
 		labelDog.setBounds(150, 300, 300, 300);
 		frame.getContentPane().add(labelDog);
 		labelDog.setVisible(false);

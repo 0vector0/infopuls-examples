@@ -25,7 +25,7 @@ public abstract class ImagePanel extends JPanel {
 	int count = 0;
 	// int x;
 	// int y;
-	private String filePath = "D:\\java\\workspace\\infopuls-examples\\img\\right1.png";
+	private String filePath = "img\\right1.png";
 
 
 	public ImagePanel() {
@@ -34,7 +34,7 @@ public abstract class ImagePanel extends JPanel {
 		BufferedImage bufferedImage = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
 		ImageIcon iconImage;
 		int x;
-		String imageDuck = "D:\\java\\workspace\\infopuls-examples\\img\\sunny_256.png";
+		String imageDuck = "img\\sunny_256.png";
 		File img = new File(imageDuck);
 		try {
 			bufferedImage = ImageIO.read(img);

@@ -17,7 +17,7 @@ public class GifAnimation {
 
 				JLabel jLabel = new JLabel("test");
 				Image image = Toolkit.getDefaultToolkit()
-						.createImage("D:\\java\\workspace\\infopuls-examples\\img\\mario_duckHuntDuck.gif");
+						.createImage("img\\mario_duckHuntDuck.gif");
 				ImageIcon imageIcon = new ImageIcon(image);
 				imageIcon.setImageObserver(jLabel);
 				jLabel.setIcon(imageIcon);
