@@ -55,7 +55,7 @@ public abstract class ImagePanel extends JPanel {
 		imageIcon.setImageObserver(imgLabel);
 		imgLabel.setIcon(imageIcon);
 		setBounds(0, 0, imageIcon.getIconWidth(), imageIcon.getIconHeight());
-		setBounds(0, 0, 100, 100);
+		// setBounds(0, 0, 100, 100);
 		add(imgLabel);
 
 	}

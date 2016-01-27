@@ -24,8 +24,6 @@ public class DuckHunt {
 	// int y;
 	Timer timer;
 	private JButton stopButton;
-	private JButton leftButton;
-	private JButton rightButton;
 	int result;
 	JLabel resultLabel;
 	private JLabel labelDog;
@@ -62,7 +60,7 @@ public class DuckHunt {
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		timer = new Timer(50, new ActionListener() {
+		timer = new Timer(400, new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				System.out.println("timer");
 			}
@@ -76,7 +74,7 @@ public class DuckHunt {
 		labelDog.setVisible(false);
 
 		JPanel buttonpanel = new JPanel();
-		buttonpanel.setBounds(500, 0, 100, 562);
+		buttonpanel.setBounds(700, 0, 100, 562);
 		frame.getContentPane().add(buttonpanel);
 		buttonpanel.setLayout(new GridLayout(0, 1, 0, 0));
 
@@ -91,7 +89,7 @@ public class DuckHunt {
 				labelDog.setVisible(false);
 				duckPanel.setVisible(true);
 				timer.stop();
-				timer = new Timer(5, new ActionListener() {
+				timer = new Timer(10, new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
 						duckPanel.flyDuck(duckPanel);
 						// duckPanel.setFlyBehavior(new FlyToLeft(duckPanel));
@@ -103,18 +101,13 @@ public class DuckHunt {
 			}
 		});
 
-		rightButton = new JButton("Right");
-		buttonpanel.add(rightButton);
-
-		leftButton = new JButton("Left");
-		buttonpanel.add(leftButton);
-
 		stopButton = new JButton("stop");
 		buttonpanel.add(stopButton);
 
 		duckPanel = new DuckPanel();
 		frame.getContentPane().add(duckPanel);
-
+		duckPanel.setBounds(400, 400, 100, 100);
+		duckPanel.setVisible(false);
 		gamePanel = new GamePanel();
 		frame.getContentPane().add(gamePanel);
 
@@ -135,34 +128,6 @@ public class DuckHunt {
 			public void mouseClicked(MouseEvent e) {
 				timer.stop();
 			}
-		});
-		leftButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				timer.stop();
-				timer = new Timer(10, new ActionListener() {
-					public void actionPerformed(ActionEvent ev) {
-						duckPanel.setFlyBehavior(new FlyToDown(duckPanel));
-						duckPanel.perfomeFly(duckPanel);
-					}
-				});
-				timer.start();
-			}
-
-		});
-		rightButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				timer.stop();
-				timer = new Timer(10, new ActionListener() {
-					public void actionPerformed(ActionEvent ev) {
-						duckPanel.setFlyBehavior(new FlyToRight(duckPanel));
-						duckPanel.perfomeFly(duckPanel);
-					}
-				});
-				timer.start();
-			}
-
 		});
 		frame.repaint();
 	}
