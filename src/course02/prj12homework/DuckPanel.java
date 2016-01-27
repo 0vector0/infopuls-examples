@@ -29,7 +29,17 @@ public class DuckPanel extends ImagePanel {
 				flyBehaviorHome = new FlyToRight(this);
 				perfomeFly(this);
 			} else {
-				flyRandomDuck(duckPanel);
+				if (rec.y == 0) {
+					flyBehaviorHome = new FlyToDownLeft(this);
+					perfomeFly(this);
+				} else {
+					if (rec.y == 500 - duckPanel.getHeight()) {
+						flyBehaviorHome = new FlyToUpLeft(this);
+						perfomeFly(this);
+					} else {
+						flyRandomDuck(duckPanel);
+					}
+				}
 			}
 		}
 
@@ -41,13 +51,13 @@ public class DuckPanel extends ImagePanel {
 			perfomeFly(this);
 			count++;
 		} else {
-			int random = (int) (Math.random() * 4) + 1;
+			int random = (int) (Math.random() * 6) + 1;
 			System.out.println(random);
 			count = 0;
 			switch (random) {
 			case 1:
-				//flyBehaviorHome = new FlyToRight(this);
-				//perfomeFly(this);
+				// flyBehaviorHome = new FlyToRight(this);
+				// perfomeFly(this);
 				break;
 			case 2:
 				flyBehaviorHome = new FlyToUpRight(this);
@@ -74,11 +84,11 @@ public class DuckPanel extends ImagePanel {
 			}
 		}
 	}
-	
+
 	public void flyDeathDuck(DuckPanel duckPanel) {
 
-				flyBehaviorHome = new FlyToDown(duckPanel);
-				perfomeFly(this);
-		}
+		flyBehaviorHome = new FlyToDown(duckPanel);
+		perfomeFly(this);
+	}
 
 }

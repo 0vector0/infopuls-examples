@@ -22,7 +22,7 @@ public class FlyToLeft implements FlyBehaviorHome {
 			rec.x = rec.x - 5;
 			changeImage(imagePanel);
 			imagePanel.setBounds(rec);
-			System.out.println("Fly to left!!!!");
+			// System.out.println("Fly to left!!!!");
 		}
 
 	}

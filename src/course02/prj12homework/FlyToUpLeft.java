@@ -25,9 +25,9 @@ public class FlyToUpLeft extends FlyToLeft implements FlyBehaviorHome {
 			changeImage(imagePanel);
 			imagePanel.setBounds(rec);
 
-			System.out.println("Fly to up left!!!!");
+		//	System.out.println("Fly to up left!!!!");
 		}
-		System.out.println("error");
+		//System.out.println("error");
 	}
 
 }

@@ -98,7 +98,7 @@ public class DuckHunt {
 				duckPanel.setVisible(true);
 				duckPanel.setFileName("right1.png");
 				duckPanel.setBounds(100, 100, 100, 100);
-				timer = new Timer(100, new ActionListener() {
+				timer = new Timer(70, new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
 						duckPanel.flyDuck(duckPanel);
 					}
