@@ -1,6 +1,6 @@
 package course02.prj14;
 
-public class StatisticsDisplay implements Observer, DisplayElement {
+public class StatisticsDisplay implements Observer_old, DisplayElement {
 
 	private float tempretature;
 	private float maxTemperature;

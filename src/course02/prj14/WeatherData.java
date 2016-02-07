@@ -1,41 +1,23 @@
 package course02.prj14;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class WeatherData implements Subject {
+public class WeatherData extends Observable {
 
-	private ArrayList<Observer> observers;
+	// private ArrayList<Observer> observers;
 	private float tempretature;
 	private float humidity;
 	private float pressure;
 
 	public WeatherData() {
-		observers = new ArrayList<Observer>();
 	}
 
-	@Override
-	public void registerObserver(Observer o) {
-		observers.add(o);
-	}
 
-	@Override
-	public void removeObserver(Observer o) {
-		int i = observers.indexOf(o);
-		if (i >= 0) {
-			observers.remove(i);
-		}
-	}
-
-	@Override
-	public void notifyObserver() {
-		for (int i = 0; i < observers.size(); i++) {
-			// Observer observer = observers.get(i);
-			observers.get(i).update(tempretature, humidity, pressure);
-		}
-	}
 
 	public void measurementChanged() {
-		notifyObserver();
+		setChanged();
+		notifyObservers();
 	}
 
 	public void setMeasurement(float tempretature, float humidity, float pressure) {
@@ -43,6 +25,18 @@ public class WeatherData implements Subject {
 		this.humidity = humidity;
 		this.pressure = pressure;
 		measurementChanged();
+	}
+
+	public float getTempretature() {
+		return tempretature;
+	}
+
+	public float getHumidity() {
+		return humidity;
+	}
+
+	public float getPressure() {
+		return pressure;
 	}
 
 	// Другие методы WeatherData

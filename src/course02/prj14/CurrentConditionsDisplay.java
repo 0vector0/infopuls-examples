@@ -1,13 +1,27 @@
 package course02.prj14;
 
+import java.util.Observable;
+import java.util.Observer;
+
 public class CurrentConditionsDisplay implements Observer, DisplayElement {
+	Observable observable;
 	private float tempereature;
 	private float humidity;
-	private Subject weatherData;
+	// private Subject weatherData;
 
-	public CurrentConditionsDisplay(Subject weatherData) {
-		this.weatherData = weatherData;
-		weatherData.registerObserver(this);
+	public CurrentConditionsDisplay(Observable observable) {
+		this.observable = observable;
+		observable.addObserver(this);
+	}
+
+	// @Override
+	public void update(Observable obs, Object arg) {
+		if (obs instanceof WeatherData) {
+		WeatherData weatherData = (WeatherData)obs; 
+		this.tempereature = weatherData.getTempretature();
+		this.humidity = weatherData.getHumidity();
+		display();
+		}
 	}
 
 	@Override
@@ -15,11 +29,5 @@ public class CurrentConditionsDisplay implements Observer, DisplayElement {
 		System.out.println("Current conditions: " + tempereature + "F degrees and " + humidity + "% humiditi");
 	}
 
-	@Override
-	public void update(float tempereature, float humidity, float pressure) {
-		this.tempereature = tempereature;
-		this.humidity = humidity;
-		display();
-	}
 
 }
