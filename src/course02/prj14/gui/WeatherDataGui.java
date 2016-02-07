@@ -12,12 +12,15 @@ import course02.prj14.WeatherData;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
+
 import java.awt.Font;
 
 public class WeatherDataGui extends JFrame {
@@ -32,6 +35,11 @@ public class WeatherDataGui extends JFrame {
 	private JLabel labelWeaterData;
 	private JLabel labelHumidity;
 	private JLabel labelPressure;
+	private JPanel panelButton;
+	private JButton buttonStart;
+	private JButton buttonStop;
+	boolean flag = true;
+	Timer timer;
 
 	public WeatherDataGui(WeatherData weatherData) {
 		this.weatherData = weatherData;
@@ -42,21 +50,10 @@ public class WeatherDataGui extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 
-		JButton buttonOK = new JButton("OK");
-		buttonOK.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				float tempretature = Float.parseFloat(textFieldTempretature.getText());
-				float humidity = Float.parseFloat(textFieldHumidity.getText());
-				float pressure = Float.parseFloat(textFieldPressure.getText());
-				weatherData.setMeasurement(tempretature, humidity, pressure);
-			}
-		});
-
 		labelWeaterData = new JLabel("WeaterData");
 		labelWeaterData.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		labelWeaterData.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(labelWeaterData, BorderLayout.NORTH);
-		contentPane.add(buttonOK, BorderLayout.SOUTH);
 
 		panelWeather = new JPanel();
 		contentPane.add(panelWeather, BorderLayout.CENTER);
@@ -85,6 +82,58 @@ public class WeatherDataGui extends JFrame {
 		textFieldPressure = new JTextField();
 		panelWeather.add(textFieldPressure);
 		textFieldPressure.setColumns(10);
+
+		panelButton = new JPanel();
+		contentPane.add(panelButton, BorderLayout.SOUTH);
+
+		JButton buttonOK = new JButton("OK");
+		panelButton.add(buttonOK);
+		buttonOK.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				save();
+			}
+		});
+		
+		timer = new Timer(400, new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				//System.out.println("timer");
+			}
+		});
+		
+		buttonStart = new JButton("Start");
+		buttonStart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				timer.stop();
+				timer = new Timer(1000, new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						float tempretature = (float) (Math.random() * 100) - 50;
+						float humidity = (float) (Math.random() * 100) - 50;
+						float pressure = (float) (Math.random() * 100) - 50;
+						weatherData.setMeasurement(tempretature, humidity, pressure);
+				
+				}
+				});
+				timer.start();
+
+		}
+		});
+		panelButton.add(buttonStart);
+
+		buttonStop = new JButton("Stop");
+		buttonStop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				timer.stop();
+			}
+		});
+		panelButton.add(buttonStop);
+
 		pack();
+	}
+
+	private void save() {
+		float tempretature = Float.parseFloat(textFieldTempretature.getText());
+		float humidity = Float.parseFloat(textFieldHumidity.getText());
+		float pressure = Float.parseFloat(textFieldPressure.getText());
+		weatherData.setMeasurement(tempretature, humidity, pressure);
 	}
 }
