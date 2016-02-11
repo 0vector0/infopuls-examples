@@ -110,6 +110,9 @@ public class WeatherDataGui extends JFrame {
 						float humidity = (float) (Math.random() * 100) - 50;
 						float pressure = (float) (Math.random() * 100) - 50;
 						weatherData.setMeasurement(tempretature, humidity, pressure);
+						textFieldTempretature.setText(String.valueOf(tempretature));
+						textFieldHumidity.setText(String.valueOf(humidity));
+						textFieldPressure.setText(String.valueOf(pressure));
 				
 				}
 				});
