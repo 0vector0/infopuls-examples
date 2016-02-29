@@ -13,8 +13,6 @@ public class Main {
 
 		System.out.println(soccerTeam.players.toString());
 
-		// TODO Auto-generated method stub
-
 	}
 
 }
