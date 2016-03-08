@@ -25,7 +25,6 @@ public class Main {
 		depoList.delete(4);
 
 		depoList.displayList();
-
 	}
 
 }
