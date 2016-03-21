@@ -31,11 +31,10 @@ public class Hive implements Runnable {
 	@Override
 	synchronized public void run() {
 
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 1; i++) {
 			new Thread(new Bee(panel, winnie, count, this)).start();
 			count = count + 10;
 		}
-
 		while (!found) {
 			if (found) {
 				System.out.println("FOUND");
