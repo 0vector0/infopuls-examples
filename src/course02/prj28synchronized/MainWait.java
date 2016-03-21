@@ -19,7 +19,7 @@ public class MainWait {
 
 		new Ivanov(ivanToPetrov);
 		new Petrov(ivanToPetrov, petrovToNechep);
-		// new Petrov(ivanToPetrov, petrovToNechep);
+		new Petrov(ivanToPetrov, petrovToNechep);
 		new Necheporchuk(petrovToNechep);
 
 		// System.out.println("Остановка");
