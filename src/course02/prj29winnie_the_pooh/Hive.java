@@ -31,7 +31,7 @@ public class Hive implements Runnable {
 	@Override
 	synchronized public void run() {
 
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 10; i++) {
 			new Thread(new Bee(panel, winnie, count, this)).start();
 			count = count + 10;
 		}

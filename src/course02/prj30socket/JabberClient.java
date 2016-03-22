@@ -28,7 +28,7 @@ public class JabberClient {
 		// InetAddress addr =
 		// InetAddress.getByName("localhost");
 		System.out.println("addr = " + addr);
-		Socket socket = new Socket("172.27.12.101", 8080);
+		Socket socket = new Socket("localhost", 8080);
 		// Помещаем все в блок try-finally, чтобы
 		// быть уверенным, что сокет закроется:
 		try {
@@ -56,7 +56,7 @@ public class JabberClient {
 			for (int i = 0; i < 10; i++) {
 
 				String str = in.readLine();
-				System.out.println("From server =" + str);
+				System.out.println("From server1111 =" + str);
 			}
 			// out.println("END");
 		} finally {

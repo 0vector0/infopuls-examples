@@ -45,7 +45,7 @@ public class MultyServer {
 					 */
 
 				}
-				System.out.println("closing...");
+				// System.out.println("closing...");
 			} catch (IOException e) {
 				System.err.println("IO Exception");
 			} finally {
