@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -28,10 +30,10 @@ public class JabberClientView extends JFrame {
 	private JTextField hostField;
 	private JTextField portField;
 	private JTextPane textArea;
-	BufferedReader in = null;
-	boolean update;
+	private BufferedReader in = null;
+	private boolean connected;
 
-	Socket socket;
+	private Socket socket;
 	private JTextField nameTextField;
 	// final PrintWriter out = new PrintWriter(new BufferedWriter(new
 	// OutputStreamWriter(socket.getOutputStream())), true);
@@ -56,6 +58,17 @@ public class JabberClientView extends JFrame {
 	 * Create the frame.
 	 */
 	public JabberClientView() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				try {
+					disConnect();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				System.exit(0);
+			}
+		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -74,10 +87,8 @@ public class JabberClientView extends JFrame {
 				try {
 					sendToPort();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
 			}
 		});
 		panel.add(sendButton, BorderLayout.EAST);
@@ -117,20 +128,11 @@ public class JabberClientView extends JFrame {
 		connectButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-
-				String host = hostField.getText();
-				int port = Integer.valueOf(portField.getText());
-
 				try {
-					socket = new Socket(host, port);
-					in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-					update = true;
-					upDate();
+					connect();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				System.out.println("socket = " + socket);
 			}
 		});
 		panel_1.add(connectButton);
@@ -138,12 +140,9 @@ public class JabberClientView extends JFrame {
 		JButton disConnectButton = new JButton("Отключить");
 		disConnectButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("closing...");
 				try {
-					update = false;
-					socket.close();
+					disConnect();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -151,48 +150,59 @@ public class JabberClientView extends JFrame {
 		panel_1.add(disConnectButton);
 	}
 
-	public void sendToPort() throws IOException {
+	public void connect() throws IOException {
+		String host = hostField.getText();
+		int port = Integer.valueOf(portField.getText());
 
 		try {
+			socket = new Socket(host, port);
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			connected = true;
+			upDate();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		System.out.println("socket = " + socket);
+	}
 
-			// System.out.println("socket = " + socket);
+	public void disConnect() throws IOException {
+		// System.out.println("disconnect");
+		connected = false;
+		try {
+			socket.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
 
-			// Вывод автоматически Output быталкивается PrintWriter'ом.
+	public void sendToPort() throws IOException {
+		try {
 			PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())),
 					true);
 
 			if (!textField.getText().equals("")) {
 				out.println(nameTextField.getText() + " - " + textField.getText());
-				// String str = in.readLine();
-				// System.out.println(str);
 			}
-
-			// out.println("END");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			System.out.println("Отправленно");
 			textField.setText("");
 		}
-
 	}
 
 	public void upDate() throws IOException {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				while (update) {
+				while (!connected) {
 					String str = null;
-
 					try {
 						str = in.readLine();
 						if (str != null) {
 							textArea.setText(textArea.getText() + str + "\n");
-							// System.out.println("From server =" + str);
 						}
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
