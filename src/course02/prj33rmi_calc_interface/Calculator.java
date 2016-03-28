@@ -5,8 +5,8 @@ import java.rmi.RemoteException;
 
 public interface Calculator extends Remote {
 
-	public int sum(int x, int y) throws RemoteException;
+	public int sum(Operands o) throws RemoteException;
 
-	public int sub(int x, int y) throws RemoteException;
+	public int sub(Operands o) throws RemoteException;
 
 }

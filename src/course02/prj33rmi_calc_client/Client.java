@@ -6,24 +6,32 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import course02.prj33rmi_calc_interface.Calculator;
+import course02.prj33rmi_calc_interface.Operands;
 
 public class Client {
 
-	public static void main(String[] args) throws NotBoundException, RemoteException, MalformedURLException {
+	public static void main(String[] args) throws NotBoundException, MalformedURLException {
 
 		String url = "//localhost:123/Calc";
 
-		Calculator Q = (Calculator) Naming.lookup(url);
+		Calculator Q;
+		try {
+			Q = (Calculator) Naming.lookup(url);
+			System.out.println("RMI object found");
 
-		System.out.println("RMI object found");
+			Operands q = new Operands(20, 10);
 
-		int x = Q.sum(10, 20);
+			int x = Q.sum(q);
+			int y = Q.sub(q);
 
-		int y = Q.sub(10, 4);
+			System.out.println(x);
+			System.out.println(y);
 
-		System.out.println(x);
+		} catch (RemoteException e) {
+			System.out.println("server not found");
+			// e.printStackTrace();
 
-		System.out.println(y);
+		}
 
 	}
 
